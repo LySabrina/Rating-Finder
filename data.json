@@ -1,0 +1,151 @@
+{
+  "kind": "customsearch#search",
+  "url": {
+    "type": "application/json",
+    "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+  },
+  "queries": {
+    "request": [
+      {
+        "title": "Google Custom Search - sony wf-1000xm4 review",
+        "totalResults": "9520000",
+        "searchTerms": "sony wf-1000xm4 review",
+        "count": 2,
+        "startIndex": 1,
+        "inputEncoding": "utf8",
+        "outputEncoding": "utf8",
+        "safe": "off",
+        "cx": "111cd93fc2e5d4b32"
+      }
+    ],
+    "nextPage": [
+      {
+        "title": "Google Custom Search - sony wf-1000xm4 review",
+        "totalResults": "9520000",
+        "searchTerms": "sony wf-1000xm4 review",
+        "count": 2,
+        "startIndex": 3,
+        "inputEncoding": "utf8",
+        "outputEncoding": "utf8",
+        "safe": "off",
+        "cx": "111cd93fc2e5d4b32"
+      }
+    ]
+  },
+  "context": {
+    "title": "rating-finder"
+  },
+  "searchInformation": {
+    "searchTime": 0.170566,
+    "formattedSearchTime": "0.17",
+    "totalResults": "9520000",
+    "formattedTotalResults": "9,520,000"
+  },
+  "items": [
+    {
+      "kind": "customsearch#result",
+      "title": "Sony WF-1000XM4 review: Top-tier ANC earbuds - SoundGuys",
+      "htmlTitle": "\u003cb\u003eSony WF-1000XM4 review\u003c/b\u003e: Top-tier ANC earbuds - SoundGuys",
+      "link": "https://www.soundguys.com/sony-wf-1000xm4-review-53454/",
+      "displayLink": "www.soundguys.com",
+      "snippet": "Jun 8, 2021 ... The Sony WF-1000XM4 is one of the best wireless earphones on the market, and the experience is as top-notch as it gets in this category. Noise ...",
+      "htmlSnippet": "Jun 8, 2021 \u003cb\u003e...\u003c/b\u003e The \u003cb\u003eSony WF\u003c/b\u003e-\u003cb\u003e1000XM4\u003c/b\u003e is one of the best wireless earphones on the market, and the experience is as top-notch as it gets in this category. Noise&nbsp;...",
+      "cacheId": "6CY_CCFleJoJ",
+      "formattedUrl": "https://www.soundguys.com/sony-wf-1000xm4-review-53454/",
+      "htmlFormattedUrl": "https://www.soundguys.com/\u003cb\u003esony\u003c/b\u003e-\u003cb\u003ewf-1000xm4\u003c/b\u003e-\u003cb\u003ereview\u003c/b\u003e-53454/",
+      "pagemap": {
+        "cse_thumbnail": [
+          {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS17c1aurk2BZpbVOi2oX-bOu-npAyeg2kyDAA959JpGnEgQDbknVkCVeey",
+            "width": "300",
+            "height": "168"
+          }
+        ],
+        "metatags": [
+          {
+            "og:image": "https://www.soundguys.com/wp-content/uploads/2021/06/sony-wf-1000xm4-review-hero.jpg",
+            "og:type": "article",
+            "article:published_time": "2023-08-10T17:58:30+00:00",
+            "og:image:width": "1920",
+            "og:site_name": "SoundGuys",
+            "og:title": "Sony WF-1000XM4 review",
+            "og:description": "The market for wireless earphones is a fast-evolving one, and the Sony WF-1000XM4 pushes the category further.",
+            "article:publisher": "https://facebook.com/realsoundguys",
+            "next-head-count": "32",
+            "article:modified_time": "2023-08-18T04:25:14+00:00",
+            "viewport": "width=device-width",
+            "sailthru.title": "Sony WF-1000XM4 review: Top-tier ANC earbuds - SoundGuys",
+            "og:locale": "en_US",
+            "og:url": "https://www.soundguys.com/sony-wf-1000xm4-review-53454/",
+            "am-api-token": "Qhdv3VgIq"
+          }
+        ],
+        "cse_image": [
+          {
+            "src": "https://www.soundguys.com/wp-content/uploads/2021/06/sony-wf-1000xm4-review-hero.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Sony WF-1000XM4 review: Software updates help keep these ...",
+      "htmlTitle": "\u003cb\u003eSony WF-1000XM4 review\u003c/b\u003e: Software updates help keep these ...",
+      "link": "https://www.cnet.com/tech/mobile/sony-wf-1000xm4-review/",
+      "displayLink": "www.cnet.com",
+      "snippet": "Dec 3, 2021 ... Excellent sound with top-notch noise canceling and improved headset performance for calls · Buds are totally redesigned and more discreet looking ...",
+      "htmlSnippet": "Dec 3, 2021 \u003cb\u003e...\u003c/b\u003e Excellent sound with top-notch noise canceling and improved headset performance for calls &middot; Buds are totally redesigned and more discreet looking&nbsp;...",
+      "cacheId": "YAvvisiCytQJ",
+      "formattedUrl": "https://www.cnet.com/tech/mobile/sony-wf-1000xm4-review/",
+      "htmlFormattedUrl": "https://www.cnet.com/tech/mobile/\u003cb\u003esony\u003c/b\u003e-\u003cb\u003ewf-1000xm4\u003c/b\u003e-\u003cb\u003ereview\u003c/b\u003e/",
+      "pagemap": {
+        "cse_thumbnail": [
+          {
+            "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRgi7EV-OjFlZvG5s8_l7zd1B9SfzZqEy0qK7Z-E_Kt1AoVsTe7jwJJGrLb",
+            "width": "300",
+            "height": "168"
+          }
+        ],
+        "metatags": [
+          {
+            "p:domain_verify": "47524839a64b83c951afca9ef6c838e0",
+            "og:image": "https://www.cnet.com/a/img/resize/234ecf77141a7d8ec44c982a9fad6bf8a7d827be/hub/2021/06/07/b2c44adf-5e2b-4e2a-afeb-c18c7120b137/sony-wf-1000xm4-2.jpg?auto=webp&fit=crop&height=675&width=1200",
+            "twitter:card": "summary_large_image",
+            "theme-color": "#ffffff",
+            "og:site_name": "CNET",
+            "twitter:url": "https://www.cnet.com/tech/mobile/sony-wf-1000xm4-review/",
+            "msapplication-tooltip": "Product reviews and prices, software downloads, and tech news - CNET",
+            "postid": "76f94275-92c7-441d-8014-9f184d2340d4",
+            "twitter:creator": "@CNET",
+            "og:description": "While they cost more than their predecessor, Sony's new WF-1000XM4 may just be the best all-around true-wireless earbuds available today.",
+            "article:publisher": "https://www.facebook.com/cnet",
+            "twitter:image": "https://www.cnet.com/a/img/resize/234ecf77141a7d8ec44c982a9fad6bf8a7d827be/hub/2021/06/07/b2c44adf-5e2b-4e2a-afeb-c18c7120b137/sony-wf-1000xm4-2.jpg?auto=webp&fit=crop&height=675&width=1200",
+            "twitter:site": "@CNET",
+            "fb:admins": "100001036810388",
+            "article:content_tier": "free",
+            "twitter:account_id": "30261067",
+            "msapplication-starturl": "https://www.cnet.com/",
+            "msapplication-tilecolor": "#141415",
+            "og:type": "article",
+            "twitter:title": "Sony WF-1000XM4 review: Software updates help keep these excellent earbuds on top",
+            "msapplication-window": "width=1024;height=768",
+            "og:title": "Look out, AirPods Pro: The Sony WF-1000XM4 earbuds are superb",
+            "fb:pages": "7155422274",
+            "referrer": "no-referrer-when-downgrade",
+            "fb:app_id": "16995676698",
+            "viewport": "width=device-width, initial-scale=1, minimum-scale=1",
+            "twitter:description": "The excellent Sony WF-1000XM4 have subtly improved with firmware upgrades and have also seen some discounts. That earns them a belated CNET Editors' Choice Award.",
+            "og:url": "https://www.cnet.com/tech/mobile/sony-wf-1000xm4-review/",
+            "article:opinion": "false",
+            "msapplication-task": "name=Home; action-uri=https://www.cnet.com/; icon-uri=https://www.cnet.com/favicon-v3.ico"
+          }
+        ],
+        "cse_image": [
+          {
+            "src": "https://www.cnet.com/a/img/resize/234ecf77141a7d8ec44c982a9fad6bf8a7d827be/hub/2021/06/07/b2c44adf-5e2b-4e2a-afeb-c18c7120b137/sony-wf-1000xm4-2.jpg?auto=webp&fit=crop&height=675&width=1200"
+          }
+        ]
+      }
+    }
+  ]
+}
