@@ -8,19 +8,19 @@ import org.jsoup.select.Elements;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RTINGsScrape implements ScrapeInterface{
+public class RTINGsScrape{
 
     private String BASE_URL = "https://www.rtings.com/search";
-    private final String USER_AGENT =  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36";
+    private static final String USER_AGENT =  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36";
     private static Map<String, String> HTTP_HEADERS = new HashMap<>(){{put("Accept-Language", "*");put("Referer", "https://www.whathifi.com/us");}};
 
-    @Override
+
     public void scrape(Document reviewPage) {
 
     }
 
-    @Override
-    public Document crawl(String productName) {
+
+    public static Document crawl(String productName) {
 
         try{
             Document doc = Jsoup.connect("https://www.rtings.com/search?q=sony%20wf-1000xm4").userAgent(USER_AGENT).headers(HTTP_HEADERS).get();
@@ -36,5 +36,9 @@ public class RTINGsScrape implements ScrapeInterface{
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void main(String[] args){
+        Document doc = RTINGsScrape.crawl("test");
     }
 }

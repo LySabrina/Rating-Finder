@@ -30,8 +30,8 @@ import java.util.Scanner;
 @Service
 public class YoutubeService {
 
-    //FIND SOME WAY TO INJECT THIS STUPID KEY
-    private static String DEVELOPER_KEY  = "AIzaSyDHYXCVprsqWTL1DIG7IXQwmZ5KLOHB0sE";
+    //FIND SOME WAY TO INJECT THIS KEY
+    private static String DEVELOPER_KEY  = "";
 
     private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
 

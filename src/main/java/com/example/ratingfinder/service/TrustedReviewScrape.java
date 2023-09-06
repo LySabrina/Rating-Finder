@@ -23,7 +23,7 @@ public class TrustedReviewScrape {
 
     public static Document crawl(String productName){
         try{
-            String API_KEY = "AIzaSyDHYXCVprsqWTL1DIG7IXQwmZ5KLOHB0sE";
+            String API_KEY = "";
             String SEARCH_ENGINE_ID = "111cd93fc2e5d4b32";
             productName += " trusted reviews";
             productName = productName.replaceAll(" ", "%20");
