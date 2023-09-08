@@ -35,7 +35,6 @@ build/
 .vscode/
 
 ### IGNORE DEV ###
-src/main/resources/application.properties
-src/main/resources/application-dev.properties
+
 data.json
 
