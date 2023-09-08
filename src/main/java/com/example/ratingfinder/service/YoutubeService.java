@@ -85,7 +85,7 @@ public class YoutubeService {
         while(input.hasNextLine()){
             String productName = input.nextLine();
             List<SearchResult> rs = youtubeService.get(productName);
-            System.out.println("Enter");
+            System.out.println("Enter Product Name");
         }
 //        List<SearchResult> rs = service.get("sony wf-1000xm4");
     }

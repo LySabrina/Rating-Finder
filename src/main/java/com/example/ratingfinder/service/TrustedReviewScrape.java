@@ -13,6 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class TrustedReviewScrape {
 
@@ -23,7 +24,7 @@ public class TrustedReviewScrape {
 
     public static Document crawl(String productName){
         try{
-            String API_KEY = "";
+            String API_KEY = "";                    //INPUT API KEY
             String SEARCH_ENGINE_ID = "111cd93fc2e5d4b32";
             productName += " trusted reviews";
             productName = productName.replaceAll(" ", "%20");
@@ -55,9 +56,18 @@ public class TrustedReviewScrape {
             JSONObject element = arr.getJSONObject(0);
             String link = element.getString("link");
             System.out.println("LINK: " + link);
+
+            String subLink = link.substring(26);
+
+            if(!subLink.toLowerCase().contains("review")){
+                return null;
+            }
+            System.out.println("Contains review: " + link.contains("review"));
             Document doc = Jsoup.connect(link).userAgent(USER_AGENT).headers(HTTP_HEADERS).get();
             System.out.println("DOCUMENT:");
-            System.out.println(doc);
+
+//            System.out.println(doc);      PRINTS OUT THE HTML DOCUMENT
+
             br.close();
             return doc;
         }
@@ -72,40 +82,68 @@ public class TrustedReviewScrape {
         Elements cons = doc.select("ul.product-cons-list").first().children();
         System.out.println("PROS:");
         for(Element e : pros){
-            System.out.println(e.text());
+            System.out.print(e.text() + ", ");
         }
 
-        System.out.println("CONS:");
+
+        System.out.println("\nCONS:");
         for(Element e: cons){
-            System.out.println(e.text());
+            System.out.print(e.text() + ", ");
         }
 
+        System.out.println();
         System.out.println();
 
         Elements h2s = doc.select("h2#introduction ~ h2");  //get the name of each section
         //Gets the <p> from all the headings. Should be used to have Python SpaCy summarize the paragraphs
-        for(Element e : h2s){
 
+
+        System.out.print("FEATURE ARTICLE TEXT");
+        for(Element e : h2s){
+            System.out.println();
             if(e.text().compareTo("Latest deals") == 0){
                 break;
             }
             String id = e.id();
-
+            System.out.println("ID : " + id);
             Elements ps = doc.select("#"+id + " ~ p");
-
-            String article = "";        //use the string to pass to a Python program to summarize the text
-            for(Element p : ps){
-                article += p.text();
-            }
-
+            System.out.println(ps.toString());
+//            String article = "";        //use the string to pass to a Python program to summarize the text
+//            for(Element p : ps){
+//                article += p.text();
+//            }
+//
+//            System.out.println(article);
 
         }
     }
     public static void main(String args[]) throws Exception{
-        Document doc = Jsoup.connect("https://www.trustedreviews.com/reviews/apple-iphone-14-pro").userAgent(USER_AGENT).headers(HTTP_HEADERS).get();
+        System.out.println("TRUSTED-REVIEW - ENTER PRODUCT NAME (EX. Iphone 14 pro)");
+        String input = "";
+        Scanner scan = new Scanner(System.in);
 
-//        Document doc =  TrustedReviewScrape.crawl("iphone 14 pro");
-        scrape(doc);
+        while(scan.hasNextLine()){
+            input = scan.nextLine();
+            if(input.compareTo("") == 0){
+                System.out.println("Invalid product name");
+            }
+            else{
+                Document doc = crawl(input);
+                if(doc == null){
+                    System.out.println("Product review could not be found");
+                }
+                else{
+                    scrape(doc);
+                }
+
+            }
+
+        }
+
+//        Document doc = Jsoup.connect("https://www.trustedreviews.com/reviews/apple-iphone-14-pro").userAgent(USER_AGENT).headers(HTTP_HEADERS).get();
+//
+////        Document doc =  TrustedReviewScrape.crawl("iphone 14 pro");
+//        scrape(doc);
     }
 
 }

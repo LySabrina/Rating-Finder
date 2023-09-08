@@ -76,25 +76,7 @@ public class HiFiScrape {
         }
         return null;
     }
-    //TESTER
-    public static void main(String[] args){
-        Scanner s = new Scanner(System.in);
-        System.out.println("ENTER PRODUCT NAME");
-        while(s.hasNext()){
-            String input = s.nextLine();
-            if(input.equals("")){
-                System.out.println("Empty input");
-            }
-            else{
-                Document doc = crawl(input);
-                if(doc != null){
-                    scrape(doc);
-                }
-            }
-            System.out.println("Enter product name again");
-        }
 
-    }
     public static void scrape(String productName){
         try{
             Document doc = Jsoup.connect(BASE_URL).userAgent(USER_AGENT).headers(HTTP_HEADERS).data("searchTerm", productName).get();
@@ -138,5 +120,25 @@ public class HiFiScrape {
         catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    //TESTER
+    public static void main(String[] args){
+        Scanner s = new Scanner(System.in);
+        System.out.println("ENTER PRODUCT NAME");
+        while(s.hasNext()){
+            String input = s.nextLine();
+            if(input.equals("")){
+                System.out.println("Empty input");
+            }
+            else{
+                Document doc = crawl(input);
+                if(doc != null){
+                    scrape(doc);
+                }
+            }
+            System.out.println("Enter product name again");
+        }
+
     }
 }
