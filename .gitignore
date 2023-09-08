@@ -33,3 +33,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### IGNORE DEV ###
+src/main/resources/application.properties
+src/main/resources/application-dev.properties

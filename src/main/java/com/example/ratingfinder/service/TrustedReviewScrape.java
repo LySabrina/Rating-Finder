@@ -1,5 +1,6 @@
 package com.example.ratingfinder.service;
 
+import com.google.api.client.util.Value;
 import com.google.gson.JsonArray;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -13,6 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class TrustedReviewScrape {
@@ -21,10 +23,12 @@ public class TrustedReviewScrape {
     private static final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36";
     private static Map<String, String> HTTP_HEADERS = new HashMap<>(){{put("Accept-Language", "*");put("Referer", "https://www.whathifi.com/us");}};
 
+    @Value("${apiKey}")
+    private static String API_KEY ;
 
     public static Document crawl(String productName){
         try{
-            String API_KEY = "";                    //INPUT API KEY
+
             String SEARCH_ENGINE_ID = "111cd93fc2e5d4b32";
             productName += " trusted reviews";
             productName = productName.replaceAll(" ", "%20");
@@ -117,33 +121,50 @@ public class TrustedReviewScrape {
 
         }
     }
-    public static void main(String args[]) throws Exception{
-        System.out.println("TRUSTED-REVIEW - ENTER PRODUCT NAME (EX. Iphone 14 pro)");
-        String input = "";
-        Scanner scan = new Scanner(System.in);
 
-        while(scan.hasNextLine()){
-            input = scan.nextLine();
-            if(input.compareTo("") == 0){
-                System.out.println("Invalid product name");
-            }
-            else{
-                Document doc = crawl(input);
-                if(doc == null){
-                    System.out.println("Product review could not be found");
+    public static void main(String args[]) throws Exception{
+        if(readAPIKey() == null){
+            System.out.println("FAILED TO LOAD API KEY");
+        }
+        else{
+            System.out.println("TRUSTED-REVIEW - ENTER PRODUCT NAME (EX. Iphone 14 pro)");
+            String input = "";
+            Scanner scan = new Scanner(System.in);
+
+            while(scan.hasNextLine()){
+                input = scan.nextLine();
+                if(input.compareTo("") == 0){
+                    System.out.println("Invalid product name");
                 }
                 else{
-                    scrape(doc);
+                    Document doc = crawl(input);
+                    if(doc == null){
+                        System.out.println("Product review could not be found");
+                    }
+                    else{
+                        scrape(doc);
+                    }
+
                 }
 
             }
-
         }
 
-//        Document doc = Jsoup.connect("https://www.trustedreviews.com/reviews/apple-iphone-14-pro").userAgent(USER_AGENT).headers(HTTP_HEADERS).get();
-//
-////        Document doc =  TrustedReviewScrape.crawl("iphone 14 pro");
-//        scrape(doc);
+    }
+
+    public static String readAPIKey(){
+        Properties properties = new Properties();
+
+        try(FileInputStream input = new FileInputStream("src/main/resources/application-dev.properties")){
+            properties.load(input);
+            TrustedReviewScrape.API_KEY = properties.getProperty("apiKey");
+            return properties.getProperty("apiKey");
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }
