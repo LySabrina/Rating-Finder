@@ -11,11 +11,10 @@ this summarized text to the user. Possible accomplish by using ChatGPT API or at
 some Transformer model (ex. Hugging Face Transformer and Hugging Faces Models)
 
 ## How to Run 
-Implement API Key at the variables that needs it. Look at the comments in the following classes and input the API key:
-1) TrustedReviewScrape
-2) YoutubeService
+1) Create a file called, "application-dev.properties" inside the directory: src/main/resources/
+2) Input the API KEY in this file
 
-Run the program inside the following:
+Run the main program inside the following:
 - TrustedReviewScrape
 - HIFIScrape
 
