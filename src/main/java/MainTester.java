@@ -1,15 +1,19 @@
-import com.example.ratingfinder.service.RTINGsScrape;
-import jdk.swing.interop.SwingInterOpUtils;
+//import com.example.ratingfinder.service.RTINGsScrape;
+//import jdk.swing.interop.SwingInterOpUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.util.List;
+public class MainTester extends SpringBootServletInitializer {
 
-public class MainTester {
     public static void main(String args[]){
 //        System.setProperty("webdriver.chrome.driver","/Users/sabrinaly/Desktop/jars/chromedriver" );
 //        WebDriver driver = new ChromeDriver();
