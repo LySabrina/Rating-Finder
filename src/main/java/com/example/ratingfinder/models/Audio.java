@@ -1,4 +1,4 @@
-package com.example.ratingfinder.Model;
+package com.example.ratingfinder.models;
 
 import jakarta.persistence.*;
 import lombok.Data;

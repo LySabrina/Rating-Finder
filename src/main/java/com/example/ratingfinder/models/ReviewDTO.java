@@ -1,4 +1,4 @@
-package com.example.ratingfinder.Model.dto;
+package com.example.ratingfinder.models;
 
 import lombok.Data;
 

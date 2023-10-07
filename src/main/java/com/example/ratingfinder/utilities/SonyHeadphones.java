@@ -1,9 +1,6 @@
-package com.example.ratingfinder.service;
+package com.example.ratingfinder.utilities;
 
-import com.example.ratingfinder.Model.Audio;
-import com.example.ratingfinder.Model.Product;
-import com.example.ratingfinder.Repository.AudioRepository;
-import com.example.ratingfinder.utilities.ChatGPT;
+import com.example.ratingfinder.models.Product;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -70,17 +67,15 @@ public class SonyHeadphones {
                 priceStr = priceStr.replaceAll(",",""); //if a comma exist, remove it
                 double price = Double.parseDouble(priceStr.substring(priceStr.indexOf("$")+1));   //convert from String to double and get rid of the dollar sign
 
-//                Audio audio = new Audio();          //Create new Audio
-//                audio.setProductName(productName);
-//                audio.setPrice(price);
-//                audio.setBrand("Sony");
-//                audio.setType(type_name);
+
                   Product product = new Product();
                   product.setName(productName.replaceAll(" ", ""));
                   product.setPrice(price);
                   product.setBrand("Sony");
                   product.setType(type_name);
-                  products.add(product);    //adding to the DB
+                  products.add(product);    //adding to an array
+
+
 
         }
 

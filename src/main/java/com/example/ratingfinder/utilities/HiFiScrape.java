@@ -1,4 +1,4 @@
-package com.example.ratingfinder.service;
+package com.example.ratingfinder.utilities;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

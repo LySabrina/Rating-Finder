@@ -1,2 +1,30 @@
-package com.example.ratingfinder.service;public class ProductService {
+package com.example.ratingfinder.service;
+
+import com.example.ratingfinder.models.Product;
+import com.example.ratingfinder.Repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ProductService {
+
+    private final ProductRepository productRepository;
+
+    @Autowired
+    public ProductService(ProductRepository productRepository){
+        this.productRepository = productRepository;
+    }
+
+    public List<String> getBrands(){
+        return productRepository.getBrands();
+    }
+
+    public List<Product> getAllProducts(){
+        return productRepository.findAll();
+    }
+
+
+
 }

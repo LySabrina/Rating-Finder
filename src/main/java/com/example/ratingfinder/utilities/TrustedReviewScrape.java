@@ -1,8 +1,6 @@
-package com.example.ratingfinder.service;
+package com.example.ratingfinder.utilities;
 
-import com.example.ratingfinder.Model.Review;
 import com.google.api.client.util.Value;
-import com.google.gson.JsonArray;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -125,6 +123,7 @@ public class TrustedReviewScrape {
             System.out.println(stringBuilder.toString());
             categoryText.put(id, text);
 
+
         }
         return categoryText;
 
@@ -153,7 +152,7 @@ public class TrustedReviewScrape {
                         HashMap<String, String> results = scrape(doc);
                         for (String key : results.keySet()){
                             System.out.println("KEY=" + key);
-                            System.out.println(results.get(key));
+                            System.out.println("SUMMARIZED PARAGRAPH: " + ChatGPT.chatGPT(results.get(key)));
                         }
                     }
 
