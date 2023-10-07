@@ -1,5 +1,6 @@
 package com.example.ratingfinder.service;
 
+import com.example.ratingfinder.Model.Review;
 import com.google.api.client.util.Value;
 import com.google.gson.JsonArray;
 import org.jsoup.Jsoup;
@@ -12,10 +13,7 @@ import org.springframework.boot.configurationprocessor.json.JSONObject;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Scanner;
+import java.util.*;
 
 public class TrustedReviewScrape {
 
@@ -63,7 +61,8 @@ public class TrustedReviewScrape {
 
             String subLink = link.substring(26);
 
-            if(!subLink.toLowerCase().contains("review")){
+            if(!subLink.toLowerCase().contains("review") || !link.contains("trustedreviews")){
+                System.out.println("LINK DID NOT CONTAIN REVIEW NOR WAS FROM TRUSTREDREVIEW. RETURNING NULL");
                 return null;
             }
             System.out.println("Contains review: " + link.contains("review"));
@@ -81,7 +80,7 @@ public class TrustedReviewScrape {
         return null;
     }
 
-    public static void scrape(Document doc){
+    public static HashMap<String, String> scrape(Document doc){
         Elements pros = doc.select("ul.product-pros-list").first().children();
         Elements cons = doc.select("ul.product-cons-list").first().children();
         System.out.println("PROS:");
@@ -101,6 +100,8 @@ public class TrustedReviewScrape {
         Elements h2s = doc.select("h2#introduction ~ h2");  //get the name of each section
         //Gets the <p> from all the headings. Should be used to have Python SpaCy summarize the paragraphs
 
+        HashMap<String, String> categoryText = new HashMap<>();
+
 
         System.out.print("FEATURE ARTICLE TEXT");
         for(Element e : h2s){
@@ -112,14 +113,21 @@ public class TrustedReviewScrape {
             System.out.println("ID : " + id);
             Elements ps = doc.select("#"+id + " ~ p");
             System.out.println(ps.toString());
+
+            StringBuilder stringBuilder = new StringBuilder();
+
 //            String article = "";        //use the string to pass to a Python program to summarize the text
-//            for(Element p : ps){
-//                article += p.text();
-//            }
-//
-//            System.out.println(article);
+            for(Element p : ps){
+                stringBuilder.append(p.text());
+            }
+
+            String text = stringBuilder.toString();
+            System.out.println(stringBuilder.toString());
+            categoryText.put(id, text);
 
         }
+        return categoryText;
+
     }
 
     public static void main(String args[]) throws Exception{
@@ -142,16 +150,35 @@ public class TrustedReviewScrape {
                         System.out.println("Product review could not be found");
                     }
                     else{
-                        scrape(doc);
+                        HashMap<String, String> results = scrape(doc);
+                        for (String key : results.keySet()){
+                            System.out.println("KEY=" + key);
+                            System.out.println(results.get(key));
+                        }
                     }
 
                 }
 
             }
         }
-
     }
 
+    public static HashMap<String, String> getReviews(String productName){
+        if(readAPIKey() == null){
+            System.out.println("-- FAILED TO LOAD API KEY");
+            System.exit(1);
+        }
+        Document doc = crawl(productName);
+        //meaning it wasn't able to find an article for that product
+        if(doc == null){
+            return null;
+        }
+        else{
+            HashMap<String, String> categoryText  = scrape(doc);
+            return categoryText;
+        }
+
+    }
     public static String readAPIKey(){
         Properties properties = new Properties();
 
