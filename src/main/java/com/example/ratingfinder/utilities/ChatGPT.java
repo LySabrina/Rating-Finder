@@ -1,31 +1,35 @@
 package com.example.ratingfinder.utilities;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Properties;
 
+@Component
 public class ChatGPT {
-    private static String url = "https://api.openai.com/v1/chat/completions";
+    private static final String url = "https://api.openai.com/v1/chat/completions";
 
     @Value("${openai-api-key}")
-    private static String API_KEY ;
-    private static String model = "gpt-3.5-turbo";
+    private  String API_KEY ;
+    private static final String model = "gpt-3.5-turbo";
 
 
-    public static String chatGPT(String prompt) {
+    public String chatGPT(String prompt) {
     String url = "https://api.openai.com/v1/chat/completions";
-    String apiKey = "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";
+
     String model = "gpt-3.5-turbo";
 
     try {
         URL obj = new URL(url);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
         connection.setRequestMethod("POST");
-        connection.setRequestProperty("Authorization", "Bearer " + apiKey);
+        connection.setRequestProperty("Authorization", "Bearer " + API_KEY);
         connection.setRequestProperty("Content-Type", "application/json");
 
         // The request body
@@ -52,7 +56,7 @@ public class ChatGPT {
             return extractMessageFromJSONResponse(response.toString());
         }
         else{
-            System.out.println("FAILED ");
+            System.out.println("FAILED TO SUMMARIZE W/CHATGPT");
             return null;
         }
 
@@ -62,7 +66,7 @@ public class ChatGPT {
     }
 }
 
-    public static String extractMessageFromJSONResponse(String response) {
+    public String extractMessageFromJSONResponse(String response) {
         int start = response.indexOf("content")+ 11;
 
         int end = response.indexOf("\"", start);
@@ -70,10 +74,14 @@ public class ChatGPT {
         return response.substring(start, end);
     }
 
+
+
     public static void main(String[] args) {
 //        summarizeText("Text");
+//        ChatGPT c = new ChatGPT();
+//        System.out.println(c.chatGPT("What is samsung"));
 
-        System.out.println(chatGPT("What is Samsung"));
+
 
     }
 

@@ -4,10 +4,12 @@ import com.example.ratingfinder.models.Product;
 import com.example.ratingfinder.models.Review;
 import com.example.ratingfinder.Repository.ProductRepository;
 import com.example.ratingfinder.Repository.ReviewRepository;
+import com.example.ratingfinder.webscraping.SonyHeadphones;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,13 +20,15 @@ import java.util.Set;
 public class DBInit implements CommandLineRunner {
 
 
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
 
-    private ReviewRepository reviewRepository;
-    public DBInit(ProductRepository productRepository, ReviewRepository reviewRepository){
+    private final ReviewRepository reviewRepository;
+    private final ChatGPT CHAT_GPT;
+    public DBInit(ProductRepository productRepository, ReviewRepository reviewRepository, ChatGPT CHAT_GPT){
         this.productRepository = productRepository;
         this.reviewRepository = reviewRepository;
+        this.CHAT_GPT = CHAT_GPT;
     }
     @Override
     public void run(String... args) throws Exception {
@@ -35,10 +39,11 @@ public class DBInit implements CommandLineRunner {
         ArrayList<Product> prods = SonyHeadphones.getSonyProducts();
         productRepository.saveAll(prods);
         System.out.println("SAVED PRODUCTS");
-
-        //Fetching all the Products recently added to the database
+//
+//        //Fetching all the Products recently added to the database
         List<Product> products = productRepository.findAll();
-
+//
+//        //Summarzing each Sony product from TrustedReview website
         for(Product product : products){
 
             //Contains the pair <CATEGORY, TEXT>
@@ -53,7 +58,8 @@ public class DBInit implements CommandLineRunner {
             //Creating Review objects that has summarized text by TrustedReview
             for(String category : keys){
                 String text = categoryText.get(category);
-                String summarizedText = ChatGPT.chatGPT("Summarize this in a few sentences: " + text);
+
+                String summarizedText = CHAT_GPT.chatGPT(  "Summarize this in a few sentences: " + text);
 //                System.out.println("SUMMARIZED TEXT = " + summarizedText);
                 Review review = new Review();
                 review.setCompany("Trusted Review");
@@ -66,8 +72,33 @@ public class DBInit implements CommandLineRunner {
             }
         }
 
+        //Summarizing each product from HiFi Scrape website
+        for(Product product: products){
+            HashMap<String, String> categoryText = HiFiScrape.getReviews(product.getName());
+            if(categoryText == null){
+                continue;
+            }
 
+            Set<String> keys = categoryText.keySet();
+            //Creating Review objects that has summarized text by WhatHifi
+            for(String category : keys){
+                String text = categoryText.get(category);
+                String summarizedText = CHAT_GPT.chatGPT ("Summarize this in a few sentences: " + text);
+//                System.out.println("SUMMARIZED TEXT = " + summarizedText);
+                Review review = new Review();
+                review.setCompany("What HiFi");
+                review.setCategory(category);
+                review.setProduct(product);
+                review.setSummary(summarizedText);
+                reviewRepository.save(review);
+
+                System.out.println("REVIEW: " + review.toString() + " FOR PRODUCT - " + product.getName() + " w/ID: " + product.getProd_id());
+            }
+        }
+
+        System.out.println("---- FINISHED SCRAPING + SUMMARIZING");
 
 
     }
+
 }

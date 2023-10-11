@@ -1,6 +1,7 @@
 package com.example.ratingfinder.utilities;
 
 import com.google.api.client.util.Value;
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -19,7 +20,7 @@ public class TrustedReviewScrape {
     private static final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36";
     private static Map<String, String> HTTP_HEADERS = new HashMap<>(){{put("Accept-Language", "*");put("Referer", "https://www.whathifi.com/us");}};
 
-    @Value("${apiKey}")
+
     private static String API_KEY ;
 
     public static Document crawl(String productName){
@@ -29,7 +30,7 @@ public class TrustedReviewScrape {
             productName += " trusted reviews";
             productName = productName.replaceAll(" ", "%20");
 
-            String base_url = "https://www.googleapis.com/customsearch/v1?key=" + API_KEY +"&cx=" + SEARCH_ENGINE_ID + "&num="+"2"+ "&q=" + productName;
+            String base_url = "https://www.googleapis.com/customsearch/v1?key=" + API_KEY +"&cx=" + SEARCH_ENGINE_ID + "&num="+"1"+ "&q=" + productName;
             URL url = new URL(base_url);
             HttpURLConnection urlConnection =(HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
@@ -129,11 +130,43 @@ public class TrustedReviewScrape {
 
     }
 
+    public static void downloadImage(String productName, String imageURL){
+        try{
+            File parentDir = new File("src/main/resources/images");
+            File childDir = new File(parentDir, "TrustedReviews");
+
+            if(!childDir.exists()){
+                boolean created = childDir.mkdir(); //if the directory failed to be created throw an exception
+                if(!created){
+                    throw new Exception();
+                }
+            }
+
+            File f = new File(childDir, productName +".jpeg");
+            if(!f.exists()){
+                if(f.createNewFile()){
+                    Connection.Response response = Jsoup.connect(imageURL).ignoreContentType(true).execute();
+                    FileOutputStream out = new FileOutputStream(f);
+                    out.write(response.bodyAsBytes());
+                    out.close();
+                    System.out.println("DONWLOADED " + productName +" .jpeg");
+                }
+                else{
+                    System.out.println("FAILED TO CREATE FILE " + productName + ".jpeg" );
+                }
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
     public static void main(String args[]) throws Exception{
         if(readAPIKey() == null){
             System.out.println("FAILED TO LOAD API KEY");
         }
         else{
+            ChatGPT CHAT_GPT = new ChatGPT();
             System.out.println("TRUSTED-REVIEW - ENTER PRODUCT NAME (EX. Iphone 14 pro)");
             String input = "";
             Scanner scan = new Scanner(System.in);
@@ -152,7 +185,7 @@ public class TrustedReviewScrape {
                         HashMap<String, String> results = scrape(doc);
                         for (String key : results.keySet()){
                             System.out.println("KEY=" + key);
-                            System.out.println("SUMMARIZED PARAGRAPH: " + ChatGPT.chatGPT(results.get(key)));
+                            System.out.println("SUMMARIZED PARAGRAPH: " + CHAT_GPT.chatGPT (results.get(key)));
                         }
                     }
 

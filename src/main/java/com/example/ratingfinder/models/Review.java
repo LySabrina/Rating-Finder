@@ -9,7 +9,7 @@ import org.hibernate.annotations.OnDeleteAction;
 @Data //implements the getters, setters and toString for you
 public class Review {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
     private int review_id;
 

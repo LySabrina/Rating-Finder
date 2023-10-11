@@ -12,7 +12,7 @@ import java.util.Set;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Prod_id")
     private int Prod_id;
 
@@ -28,8 +28,6 @@ public class Product {
 
     @Column(name="Product_Type", nullable = true)
     private String type;    //type like earbuds, headphones, or NULL if not applicable
-
-
 
 
 }
