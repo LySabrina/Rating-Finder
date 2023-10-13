@@ -24,4 +24,7 @@ public class UserReview {
    @OnDelete(action=OnDeleteAction.CASCADE)
    private Product product;
 
+   //Score out of 5 stars
+   private int rating;
+
 }
