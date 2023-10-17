@@ -29,5 +29,7 @@ public class Product {
     @Column(name="Product_Type", nullable = true)
     private String type;    //type like earbuds, headphones, or NULL if not applicable
 
-
+    @Lob
+    @Column(name="image", columnDefinition = "MEDIUMBLOB")
+    private byte[] image;
 }

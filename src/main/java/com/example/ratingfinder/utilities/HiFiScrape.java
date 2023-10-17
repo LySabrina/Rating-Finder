@@ -150,6 +150,42 @@ public class HiFiScrape {
         }
     }
 
+    public static float getPrice(String productName){
+        try{
+            Document doc = Jsoup.connect(BASE_URL).userAgent(USER_AGENT).headers(HTTP_HEADERS).data("searchTerm", productName).get();
+            Elements articleNames = doc.select(".article-name");
+//            System.out.println("ARTICLE NAME: " + articleNames.toString());
+            boolean reviewFound = false;
+            String link = "";
+
+
+            for(Element e: articleNames){
+                if(e.text().toLowerCase().contains(productName.toLowerCase()) && e.text().toLowerCase().contains("review")){
+
+                        Element anchor = e.parent().parent().parent().parent();
+                        link = anchor.attributes().get("href");
+                        System.out.println("LINK: " + link);
+                        reviewFound = true;
+                        break;
+
+                }
+
+            }
+            if(reviewFound){
+                Document reviewPage = Jsoup.connect(link).userAgent(USER_AGENT).header("Accept-Language", "*").header("Referer", doc.location()).get();
+                String span = reviewPage.selectFirst(".testedAtPrice").text();
+                int price = Integer.parseInt(span.substring(span.indexOf("$")+1));
+                return price;
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+
+        }
+        return 0;
+
+    }
+
     public static HashMap<String, String> getReviews(String productName){
         Document doc = crawl(productName);
         if(doc == null){
@@ -163,21 +199,21 @@ public class HiFiScrape {
     }
     //TESTER
     public static void main(String[] args){
-        Scanner s = new Scanner(System.in);
-        System.out.println("ENTER PRODUCT NAME");
-        while(s.hasNext()){
-            String input = s.nextLine();
-            if(input.equals("")){
-                System.out.println("Empty input");
-            }
-            else{
-                Document doc = crawl(input);
-                if(doc != null){
-                    scrape(doc);
-                }
-            }
-            System.out.println("Enter product name again");
-        }
-
+//        Scanner s = new Scanner(System.in);
+//        System.out.println("ENTER PRODUCT NAME");
+//        while(s.hasNext()){
+//            String input = s.nextLine();
+//            if(input.equals("")){
+//                System.out.println("Empty input");
+//            }
+//            else{
+//                Document doc = crawl(input);
+//                if(doc != null){
+//                    scrape(doc);
+//                }
+//            }
+//            System.out.println("Enter product name again");
+//        }
+        System.out.println(getPrice("Google pixel 7a "));
     }
 }

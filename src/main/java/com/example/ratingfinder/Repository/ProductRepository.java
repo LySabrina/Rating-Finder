@@ -16,5 +16,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     List<String> getBrands();
 
 
+    @Query(value ="SELECT DISTINCT product_type from Product", nativeQuery = true)
+    List<String> getProductTypes();
+
 
 }

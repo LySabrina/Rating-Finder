@@ -29,7 +29,7 @@ private final UserService userService;
     }
 
     @PostMapping("/api/createUser")
-    public ResponseEntity<String> createUser(@RequestParam User newUser)
+    public ResponseEntity<String> createUser(@RequestBody User newUser)
     {
 
         userService.saveUser(newUser);

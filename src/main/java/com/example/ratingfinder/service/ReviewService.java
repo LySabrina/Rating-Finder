@@ -19,4 +19,8 @@ public class ReviewService {
     public List<Review> getReviewForId(int id){
        return reviewRepository.getReviewsForId(id);
     }
+
+    public void flush(){
+        reviewRepository.flush();
+    }
 }

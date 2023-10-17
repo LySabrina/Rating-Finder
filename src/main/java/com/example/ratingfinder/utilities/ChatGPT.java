@@ -56,7 +56,7 @@ public class ChatGPT {
             return extractMessageFromJSONResponse(response.toString());
         }
         else{
-            System.out.println("FAILED TO SUMMARIZE W/CHATGPT");
+            System.out.println("FAILED TO SUMMARIZE W/CHATGPT w/ERROR CODE - " + connection.getResponseCode());
             return null;
         }
 
@@ -77,9 +77,9 @@ public class ChatGPT {
 
 
     public static void main(String[] args) {
-//        summarizeText("Text");
-//        ChatGPT c = new ChatGPT();
-//        System.out.println(c.chatGPT("What is samsung"));
+
+        ChatGPT c = new ChatGPT();
+        System.out.println(c.chatGPT("What is samsung"));
 
 
 
