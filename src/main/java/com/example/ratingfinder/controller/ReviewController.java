@@ -79,7 +79,7 @@ public class ReviewController {
     //<!--------------------------- POST MAPPING ----------------------->
     //Saves a userReview for a product
     @PostMapping("/product/{id}/create")
-    public ResponseEntity<String> postReview(@RequestPart("data") UserReviewDTO userReviewDTO, @RequestPart("file") List<MultipartFile> file, @PathVariable int id){
+    public ResponseEntity<String> postReview(@RequestPart("data") UserReviewDTO userReviewDTO, @RequestPart(value="file", required = false) List<MultipartFile> file, @PathVariable int id){
         try{
             UserReview userReview = new UserReview();
 
@@ -97,21 +97,28 @@ public class ReviewController {
             userReview.setRating(userReviewDTO.getRating());
 
 
-            //it's staying as User_Review_id = 1, it's not updating
+
             UserReview addedReview = userReviewService.addUserReview(userReview);
 //            userReviewService.flush();
 
             //Dealing with uploaded photos
-            for(MultipartFile f : file){
-                String fileName = StringUtils.cleanPath(f.getOriginalFilename());
-                byte[] imgBytes = f.getBytes();
+            if(file != null){
+                for(MultipartFile f : file){
+                    String fileName = StringUtils.cleanPath(f.getOriginalFilename());
+                    byte[] imgBytes = f.getBytes();
 
-                Image img = new Image();
-                img.setFile_name(fileName);
-                img.setImage(imgBytes);
-                img.setUser_review_id(addedReview);
-                imageService.saveImage(img);
+                    Image img = new Image();
+                    img.setFile_name(fileName);
+                    img.setImage(imgBytes);
+                    img.setUser_review_id(addedReview);
+                    imageService.saveImage(img);
+                }
             }
+
+            int newAvgRating = userReviewService.getAvgRatingForProduct(p.getProd_id());
+            productService.setRating(newAvgRating, p.getProd_id());
+            //Now that user_review is in the database, we want to update the product's rating
+
 
             return new ResponseEntity<>("Successfully created review", HttpStatus.OK);
         }

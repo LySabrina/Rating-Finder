@@ -47,6 +47,9 @@ public class UserReviewService {
         return dtos;
     }
 
+    public int getAvgRatingForProduct(int id){
+        return userReviewRepository.getAvgRatingForProduct(id);
+    }
     public void flush(){
         userReviewRepository.flush();
     }

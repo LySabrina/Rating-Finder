@@ -2,6 +2,7 @@ package com.example.ratingfinder.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.util.HashSet;
 import java.util.List;
@@ -32,4 +33,9 @@ public class Product {
     @Lob
     @Column(name="image", columnDefinition = "MEDIUMBLOB")
     private byte[] image;
+
+    //Default value is 0
+    @Column(name="rating")
+    private int rating = 0;
 }
+

@@ -2,6 +2,7 @@ package com.example.ratingfinder.controller;
 
 import com.example.ratingfinder.models.Product;
 import com.example.ratingfinder.service.ProductService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class ProductController {
 
     private final ProductService productService;
@@ -34,5 +36,10 @@ public class ProductController {
     @GetMapping("/product/{id}")
     public Product getProductById(@PathVariable int id){
         return productService.getProductById(id);
+    }
+
+    @GetMapping("/product/prices")
+    public List<Double> getAllPrices(){
+        return productService.getAllPrices();
     }
 }

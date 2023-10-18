@@ -8,7 +8,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({"com.example.ratingfinder.controller","com.example.ratingfinder.config", "com.example.ratingfinder.models.ScrapeModel","com.example.ratingfinder.models","com.example.ratingfinder.Repository","com.example.ratingfinder.service", "com.example.ratingfinder.utilities"})
+@ComponentScan({"com.example.ratingfinder.controller","com.example.ratingfinder.webscraping","com.example.ratingfinder.models","com.example.ratingfinder.Repository","com.example.ratingfinder.service", "com.example.ratingfinder.utilities"})
 
 public class RatingFinderApplication extends SpringBootServletInitializer {
 
