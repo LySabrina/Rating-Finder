@@ -42,4 +42,14 @@ public class ProductController {
     public List<Double> getAllPrices(){
         return productService.getAllPrices();
     }
+
+//    @GetMapping("/product/existing/")
+//    public Integer getExistingProductID(){
+//        return productService.getExistingProductID("iPhone 15 Pro Max");
+//    }
+//
+//    @GetMapping("/product/nonexist/")
+//    public Integer getNonExist(){
+//        return productService.getExistingProductID("Sony Xperia 5 V");
+//    }
 }

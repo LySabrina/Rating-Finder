@@ -29,4 +29,9 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query(value = "SELECT DISTINCT price from product", nativeQuery = true)
     List<Double> getAllPrices();
+
+    @Query(value = "SELECT * from product where product_name LIKE %:name", nativeQuery = true)
+    Product getExistingProductID(@Param("name")String name);
+
+
 }

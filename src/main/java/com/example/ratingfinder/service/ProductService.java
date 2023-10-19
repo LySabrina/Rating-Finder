@@ -43,4 +43,12 @@ public class ProductService {
         return productRepository.getAllPrices();
     }
 
+    public Product getExistingProductID(String name){
+        return productRepository.getExistingProductID(name);
+    }
+
+    public Product save(Product p){
+        return productRepository.save(p);
+    }
+
 }

@@ -23,4 +23,8 @@ public class ReviewService {
     public void flush(){
         reviewRepository.flush();
     }
+
+    public Review save(Review r){
+        return reviewRepository.save(r);
+    }
 }
