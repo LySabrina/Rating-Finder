@@ -29,7 +29,7 @@ public class UserReviewService {
 
     public List<UserReviewDTO> getUserReviewForProduct(int id){
         List<UserReview> userReviews = userReviewRepository.getUserReviewForProduct(id);
-        System.out.println(userReviews.toString());
+//        System.out.println(userReviews.toString());
         List<UserReviewDTO> dtos = new ArrayList<UserReviewDTO>();
 
         for(UserReview r :userReviews){
@@ -38,8 +38,9 @@ public class UserReviewService {
             userReviewDTO.setReview_text(r.getReview_text());
             userReviewDTO.setRating(r.getRating());
             userReviewDTO.setProduct_id(r.getProduct().getProd_id());
-
-            List<byte[]> photos = imageService.getUserReviewImages(id);
+            int user_review_id = r.getUserReviewId();
+            List<byte[]> photos = imageService.getUserReviewImages(user_review_id);
+            System.out.println("Photos - " + photos.toString());    //currently balnk
             userReviewDTO.setPhotos(photos);
 
             dtos.add(userReviewDTO);

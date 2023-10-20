@@ -66,15 +66,18 @@ public class ReviewController {
     }
 
     //Returns image as Base64
-//    @GetMapping("/product/getPicture")
-//    public ResponseEntity<byte[]> getPicture(){
+    @GetMapping("/product/getPicture")
+    public ResponseEntity<List<byte[]>> getPicture(){
+
+        List<byte[]> n = imageService.getUserReviewImages(3);
+        return ResponseEntity.ok(n);
 //        List<UserReviewDTO> r= userReviewService.getUserReviewForProduct(1);
 //        UserReviewDTO d = r.get(2);
 //        byte[] img = d.getPhoto();
 //
 //        System.out.println("image created");
 //        return ResponseEntity.ok(img);
-//    }
+    }
 
     //<!--------------------------- POST MAPPING ----------------------->
     //Saves a userReview for a product
@@ -106,7 +109,7 @@ public class ReviewController {
                 for(MultipartFile f : file){
                     String fileName = StringUtils.cleanPath(f.getOriginalFilename());
                     byte[] imgBytes = f.getBytes();
-
+                    System.out.println("FILENAME - " + fileName);
                     Image img = new Image();
                     img.setFile_name(fileName);
                     img.setImage(imgBytes);

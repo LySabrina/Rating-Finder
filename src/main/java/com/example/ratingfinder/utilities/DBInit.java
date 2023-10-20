@@ -17,14 +17,14 @@ public class DBInit implements CommandLineRunner {
     private final ReviewRepository reviewRepository;
     private final ChatGPT CHAT_GPT;
 
-    private final TechRadarScrape techRadarScrape;
+
     private final WhatHifi hifi;
     private final TechRadar techRadar;
-    public DBInit(ProductRepository productRepository, ReviewRepository reviewRepository, ChatGPT CHAT_GPT, TechRadarScrape techRadarScrape, WhatHifi hifi, TechRadar techRadar){
+    public DBInit(ProductRepository productRepository, ReviewRepository reviewRepository, ChatGPT CHAT_GPT,  WhatHifi hifi, TechRadar techRadar){
         this.productRepository = productRepository;
         this.reviewRepository = reviewRepository;
         this.CHAT_GPT = CHAT_GPT;
-        this.techRadarScrape = techRadarScrape;
+
         this.hifi = hifi;
         this.techRadar = techRadar;
     }
@@ -36,9 +36,13 @@ public class DBInit implements CommandLineRunner {
 
 
         // <!----------- PHONE ----------->
-        hifi.crawl("https://www.whathifi.com/us/products/tablets-and-smartphones", "Phone");
+//        hifi.crawl("https://www.whathifi.com/us/products/tablets-and-smartphones", "Phone");
         //UNCOMMENT BELOW TO SCRPAE FROM ANOTHER SITE
 //        techRadar.crawl("https://www.techradar.com/phones/reviews/", "Phone");
+
+        // <!----------- HEADPHONE ----------->
+        hifi.crawl("https://www.whathifi.com/us/products/headphones/page/4", "Headphones");
+
         System.out.println("---- FINISHED SCRAPING + SUMMARIZING");
 
 

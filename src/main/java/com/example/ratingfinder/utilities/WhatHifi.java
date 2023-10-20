@@ -41,10 +41,15 @@ public class WhatHifi {
             Document doc = Jsoup.connect(startingURL).headers(HTTP_HEADERS).userAgent(USER_AGENT).get();
             //scrape the first page
 
-            Elements page_links = doc.select(".pagination-numerical-list-item-link");
+
             scrapePage(doc, type);
+            Element starting = doc.selectFirst(".current-page");
+            Elements page_links = starting.nextElementSiblings().select(".pagination-numerical-list-item-link");
+
             for(Element page_link : page_links){
+                System.out.println("ON PAGE - " + page_link.text());
                 String link = page_link.attr("href");
+
                 Document linkDoc = Jsoup.connect(link).headers(HTTP_HEADERS).userAgent(USER_AGENT).get();
                 scrapePage(linkDoc, type);
             }
