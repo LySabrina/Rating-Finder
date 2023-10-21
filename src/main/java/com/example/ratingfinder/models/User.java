@@ -74,4 +74,5 @@ public class User {
     public void setCredit_level(int credit_level) {
         this.credit_level = credit_level;
     }
+
 }

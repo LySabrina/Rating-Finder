@@ -1,0 +1,1192 @@
+﻿[
+    {
+        "Brand": "Apple",
+        "Model": "iPhone 13 Pro",
+        "Price": "999"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy S21 Ultra",
+        "Price": "1199"
+    },
+    {
+        "Brand": "OnePlus",
+        "Model": "9 Pro",
+        "Price": "899"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Redmi Note 10 Pro",
+        "Price": "279"
+    },
+    {
+        "Brand": "Google",
+        "Model": "Pixel 6",
+        "Price": "799"
+    },
+    {
+        "Brand": "Apple",
+        "Model": "iPhone 13",
+        "Price": "799"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy Z Flip3",
+        "Price": "999"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Poco X3 Pro",
+        "Price": "249"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "Reno6 Pro+ 5G",
+        "Price": "699"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "X70 Pro+",
+        "Price": "1199"
+    },
+    {
+        "Brand": "OnePlus",
+        "Model": "Nord CE 5G",
+        "Price": "329"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A52s 5G",
+        "Price": "449"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "GT Neo2",
+        "Price": "329"
+    },
+    {
+        "Brand": "Apple",
+        "Model": "iPhone 12 Mini",
+        "Price": "699"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "Find X3 Pro",
+        "Price": "1199"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Mi 11 Lite 5G NE",
+        "Price": "329"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy S21",
+        "Price": "799"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "Y20s (G)",
+        "Price": "199"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "8s 5G",
+        "Price": "299"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A94",
+        "Price": "379"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Redmi 10 Prime",
+        "Price": "179"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A22 5G",
+        "Price": "279"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "Narzo 50 Pro 5G",
+        "Price": "249"
+    },
+    {
+        "Brand": "OnePlus",
+        "Model": "9",
+        "Price": "729"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Redmi Note 10 Pro Max",
+        "Price": "279"
+    },
+    {
+        "Brand": "Apple",
+        "Model": "iPhone 11",
+        "Price": "599"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A03s",
+        "Price": "139"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A74 5G",
+        "Price": "299"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "Y12s (2021)",
+        "Price": "139"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "9i",
+        "Price": "189"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy M52 5G",
+        "Price": "449"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Redmi 10",
+        "Price": "179"
+    },
+    {
+        "Brand": "Apple",
+        "Model": "iPhone SE (2nd Gen)",
+        "Price": "399"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A53s",
+        "Price": "259"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "Y33s",
+        "Price": "279"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "C25s",
+        "Price": "159"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A22 4G",
+        "Price": "229"
+    },
+    {
+        "Brand": "OnePlus",
+        "Model": "Nord 2 5G",
+        "Price": "399"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Poco M3 Pro 5G",
+        "Price": "199"
+    },
+    {
+        "Brand": "Apple",
+        "Model": "iPhone XR",
+        "Price": "499"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A16",
+        "Price": "159"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "C21Y",
+        "Price": "129"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy F22",
+        "Price": "189"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "F19 Pro+ 5G",
+        "Price": "399"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Mi 11X",
+        "Price": "529"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "V21e",
+        "Price": "369"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "8 5G",
+        "Price": "199"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy M12",
+        "Price": "159"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A16s",
+        "Price": "179"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Redmi 9 Power",
+        "Price": "189"
+    },
+    {
+        "Brand": "Apple",
+        "Model": "iPhone 11 Pro Max",
+        "Price": "1099"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "Y20G",
+        "Price": "169"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "Narzo 50i",
+        "Price": "99"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A54",
+        "Price": "239"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Redmi 9T",
+        "Price": "199"
+    },
+    {
+        "Brand": "Apple",
+        "Model": "iPhone 13 Pro Max",
+        "Price": "1299"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "Y33",
+        "Price": "249"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A72",
+        "Price": "429"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "Reno6 Pro 5G",
+        "Price": "659"
+    },
+    {
+        "Brand": "Apple",
+        "Model": "iPhone SE (2020)",
+        "Price": "399"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "Y53s",
+        "Price": "269"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "7i",
+        "Price": "239"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A52 5G",
+        "Price": "449"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "F19 Pro",
+        "Price": "359"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Redmi Note 10S",
+        "Price": "229"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "Y21s",
+        "Price": "179"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Mi 11 Lite 5G",
+        "Price": "369"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "X60 Pro",
+        "Price": "799"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "Narzo 50A",
+        "Price": "139"
+    },
+    {
+        "Brand": "OnePlus",
+        "Model": "Nord 2",
+        "Price": "399"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Poco X4 Pro",
+        "Price": "329"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "GT Master Edition",
+        "Price": "399"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "Reno6 Pro+",
+        "Price": "699"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Edge 20 Pro",
+        "Price": "699"
+    },
+    {
+        "Brand": "Nokia",
+        "Model": "XR20",
+        "Price": "549"
+    },
+    {
+        "Brand": "Sony",
+        "Model": "Xperia 5 III",
+        "Price": "1299"
+    },
+    {
+        "Brand": "LG",
+        "Model": "Wing",
+        "Price": "999"
+    },
+    {
+        "Brand": "Asus",
+        "Model": "Zenfone 8 Flip",
+        "Price": "899"
+    },
+    {
+        "Brand": "Blackberry",
+        "Model": "KEY2 LE",
+        "Price": "399"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "F19 Pro+",
+        "Price": "349"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Moto G60",
+        "Price": "279"
+    },
+    {
+        "Brand": "Nokia",
+        "Model": "5.4",
+        "Price": "249"
+    },
+    {
+        "Brand": "LG",
+        "Model": "K92 5G",
+        "Price": "349"
+    },
+    {
+        "Brand": "Asus",
+        "Model": "Zenfone 8",
+        "Price": "699"
+    },
+    {
+        "Brand": "Blackberry",
+        "Model": "KEY2",
+        "Price": "699"
+    },
+    {
+        "Brand": "CAT",
+        "Model": "S42",
+        "Price": "299"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy Z Flip 3",
+        "Price": "999"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Mi 11 Ultra",
+        "Price": "1199"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "Y12A",
+        "Price": "139"
+    },
+    {
+        "Brand": "Nokia",
+        "Model": "C20 Plus",
+        "Price": "99"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy S20 FE 5G",
+        "Price": "699"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Moto E7i Power",
+        "Price": "99"
+    },
+    {
+        "Brand": "Asus",
+        "Model": "ROG Phone 5",
+        "Price": "999"
+    },
+    {
+        "Brand": "LG",
+        "Model": "Velvet 5G",
+        "Price": "499"
+    },
+    {
+        "Brand": "Blackberry",
+        "Model": "Evolve",
+        "Price": "399"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "Reno 6 Pro+",
+        "Price": "799"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Moto G50",
+        "Price": "249"
+    },
+    {
+        "Brand": "Nokia",
+        "Model": "G20",
+        "Price": "199"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy M32",
+        "Price": "279"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "8i",
+        "Price": "239"
+    },
+    {
+        "Brand": "Nokia",
+        "Model": "C30",
+        "Price": "149"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A32",
+        "Price": "279"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Moto G Stylus 5G",
+        "Price": "399"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A21s",
+        "Price": "219"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "Y12s",
+        "Price": "149"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "F19s",
+        "Price": "299"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "Narzo 30 Pro 5G",
+        "Price": "279"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Moto G Pure",
+        "Price": "169"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "Reno6 Z 5G",
+        "Price": "389"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy S21 Ultra 5G",
+        "Price": "1199"
+    },
+    {
+        "Brand": "Nokia",
+        "Model": "G50",
+        "Price": "299"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Redmi 9 Activ",
+        "Price": "149"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A54s",
+        "Price": "249"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy M22",
+        "Price": "219"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Moto G Power 2022",
+        "Price": "249"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Poco X3 GT",
+        "Price": "299"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy F42 5G",
+        "Price": "309"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Edge 20 Fusion",
+        "Price": "499"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "C21",
+        "Price": "129"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "V21 5G",
+        "Price": "499"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Redmi Note 9 Pro Max",
+        "Price": "279"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Moto G Power 2021",
+        "Price": "199"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "V21e 5G",
+        "Price": "329"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A53s 5G",
+        "Price": "279"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Mi 11 Lite NE",
+        "Price": "329"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Moto G Stylus 2021",
+        "Price": "299"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A54s 5G",
+        "Price": "299"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy F41",
+        "Price": "239"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy M52",
+        "Price": "449"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Moto G50s",
+        "Price": "249"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A13",
+        "Price": "189"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A42 5G",
+        "Price": "329"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Moto G9 Power Lite",
+        "Price": "149"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A22",
+        "Price": "219"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A74",
+        "Price": "299"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "Y72 5G",
+        "Price": "339"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Mi 10i",
+        "Price": "319"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "Narzo 30 Pro",
+        "Price": "279"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy M62",
+        "Price": "429"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A12",
+        "Price": "179"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A15s",
+        "Price": "169"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "C11 2021",
+        "Price": "99"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Redmi 9i",
+        "Price": "139"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A53",
+        "Price": "219"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "7 5G",
+        "Price": "279"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy M31s",
+        "Price": "379"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A15",
+        "Price": "149"
+    },
+    {
+        "Brand": "Nokia",
+        "Model": "G10",
+        "Price": "169"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "C25",
+        "Price": "179"
+    },
+    {
+        "Brand": "Nokia",
+        "Model": "X20",
+        "Price": "449"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "Y20s G",
+        "Price": "209"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "Reno 6 Pro 5G",
+        "Price": "549"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "Y31s",
+        "Price": "239"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A32 5G",
+        "Price": "279"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Redmi Note 10",
+        "Price": "199"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "V20 SE",
+        "Price": "319"
+    },
+    {
+        "Brand": "Nokia",
+        "Model": "3.4",
+        "Price": "179"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "C20",
+        "Price": "99"
+    },
+    {
+        "Brand": "Nokia",
+        "Model": "1.4",
+        "Price": "119"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A02s",
+        "Price": "139"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "Y51A",
+        "Price": "289"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "Narzo 20",
+        "Price": "199"
+    },
+    {
+        "Brand": "Nokia",
+        "Model": "5.3",
+        "Price": "199"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Redmi Note 8",
+        "Price": "179"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy M11",
+        "Price": "130"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "Y20s",
+        "Price": "249"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "C11",
+        "Price": "99"
+    },
+    {
+        "Brand": "Nokia",
+        "Model": "2.4",
+        "Price": "129"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Redmi 9",
+        "Price": "149"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A11",
+        "Price": "129"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A12",
+        "Price": "139"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "C15",
+        "Price": "179"
+    },
+    {
+        "Brand": "Nokia",
+        "Model": "3.1 Plus",
+        "Price": "139"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Redmi Note 7",
+        "Price": "159"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A31",
+        "Price": "199"
+    },
+    {
+        "Brand": "Vivo",
+        "Model": "Y15",
+        "Price": "189"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "Narzo 10A",
+        "Price": "129"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A30s",
+        "Price": "279"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy Note 20 Ultra",
+        "Price": "1299"
+    },
+    {
+        "Brand": "Google",
+        "Model": "Pixel 5",
+        "Price": "699"
+    },
+    {
+        "Brand": "Huawei",
+        "Model": "Mate 40 Pro",
+        "Price": "1199"
+    },
+    {
+        "Brand": "OnePlus",
+        "Model": "Nord N10 5G",
+        "Price": "299"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "Reno 5 Pro 5G",
+        "Price": "449"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A71",
+        "Price": "599"
+    },
+    {
+        "Brand": "Nokia",
+        "Model": "8.3 5G",
+        "Price": "499"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Mi 11",
+        "Price": "749"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Moto G Power (2021)",
+        "Price": "199"
+    },
+    {
+        "Brand": "Google",
+        "Model": "Pixel 4a 5G",
+        "Price": "499"
+    },
+    {
+        "Brand": "Huawei",
+        "Model": "Nova 8 Pro 5G",
+        "Price": "699"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy A52",
+        "Price": "449"
+    },
+    {
+        "Brand": "OnePlus",
+        "Model": "8T",
+        "Price": "749"
+    },
+    {
+        "Brand": "Nokia",
+        "Model": "G50 5G",
+        "Price": "299"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "Find X3 Neo 5G",
+        "Price": "899"
+    },
+    {
+        "Brand": "Huawei",
+        "Model": "P40 Pro",
+        "Price": "1099"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Moto G Stylus (2021)",
+        "Price": "299"
+    },
+    {
+        "Brand": "Google",
+        "Model": "Pixel 4",
+        "Price": "799"
+    },
+    {
+        "Brand": "Apple",
+        "Model": "iPhone 12",
+        "Price": "799"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A94 5G",
+        "Price": "399"
+    },
+    {
+        "Brand": "Huawei",
+        "Model": "Nova 9 Pro 5G",
+        "Price": "699"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy S10 Lite",
+        "Price": "649"
+    },
+    {
+        "Brand": "OnePlus",
+        "Model": "8 Pro",
+        "Price": "999"
+    },
+    {
+        "Brand": "Nokia",
+        "Model": "7.2",
+        "Price": "349"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Mi 10T Pro",
+        "Price": "599"
+    },
+    {
+        "Brand": "Huawei",
+        "Model": "Mate 30 Pro 5G",
+        "Price": "1099"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy M51",
+        "Price": "449"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "Reno4 Pro 5G",
+        "Price": "799"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Moto G9 Plus",
+        "Price": "279"
+    },
+    {
+        "Brand": "Apple",
+        "Model": "iPhone XS Max",
+        "Price": "1099"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Redmi Note 9S",
+        "Price": "249"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A92",
+        "Price": "399"
+    },
+    {
+        "Brand": "Huawei",
+        "Model": "P30 Pro",
+        "Price": "999"
+    },
+    {
+        "Brand": "OnePlus",
+        "Model": "7 Pro",
+        "Price": "699"
+    },
+    {
+        "Brand": "Nokia",
+        "Model": "6.2",
+        "Price": "249"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Mi 10T Lite",
+        "Price": "279"
+    },
+    {
+        "Brand": "Apple",
+        "Model": "iPhone 8 Plus",
+        "Price": "699"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Moto G8 Power",
+        "Price": "229"
+    },
+    {
+        "Brand": "Huawei",
+        "Model": "Nova 7i",
+        "Price": "329"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy S21+ 5G",
+        "Price": "999"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Mi 11 Lite",
+        "Price": "399"
+    },
+    {
+        "Brand": "OnePlus",
+        "Model": "Nord",
+        "Price": "449"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Moto G10",
+        "Price": "199"
+    },
+    {
+        "Brand": "Huawei",
+        "Model": "P40 Pro+",
+        "Price": "1399"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy Note20 5G",
+        "Price": "999"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Poco M3",
+        "Price": "179"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy S20 Ultra 5G",
+        "Price": "1399"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Moto G9 Power",
+        "Price": "229"
+    },
+    {
+        "Brand": "Samsung",
+        "Model": "Galaxy Z Fold2 5G",
+        "Price": "1999"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Mi 10T Pro 5G",
+        "Price": "599"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Redmi 9C",
+        "Price": "119"
+    },
+    {
+        "Brand": "Huawei",
+        "Model": "Y7p",
+        "Price": "199"
+    },
+    {
+        "Brand": "Apple",
+        "Model": "iPhone 12 Pro",
+        "Price": "999"
+    },
+    {
+        "Brand": "Realme",
+        "Model": "7",
+        "Price": "299"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "A93",
+        "Price": "319"
+    },
+    {
+        "Brand": "Motorola",
+        "Model": "Moto G Pro",
+        "Price": "329"
+    },
+    {
+        "Brand": "Huawei",
+        "Model": "P30 Lite",
+        "Price": "329"
+    },
+    {
+        "Brand": "Xiaomi",
+        "Model": "Mi 10 Lite 5G",
+        "Price": "349"
+    },
+    {
+        "Brand": "Apple",
+        "Model": "iPhone 12 Pro Max",
+        "Price": "1099"
+    },
+    {
+        "Brand": "Oppo",
+        "Model": "Reno3",
+        "Price": "429"
+    }
+]
