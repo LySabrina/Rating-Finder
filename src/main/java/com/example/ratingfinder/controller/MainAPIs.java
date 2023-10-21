@@ -3,11 +3,17 @@ package com.example.ratingfinder.controller;
 
 import com.example.ratingfinder.models.User;
 import com.example.ratingfinder.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import org.apache.ibatis.jdbc.Null;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -17,6 +23,7 @@ private final UserService userService;
 
 //users CRUD apis
 
+    @Autowired
     public MainAPIs(UserService userService) {
         this.userService = userService;
     }
@@ -39,7 +46,7 @@ private final UserService userService;
     @GetMapping("/api/getUserById")
     public ResponseEntity<User> getUserById(@RequestParam int id)
     {
-        id = 1;
+        //id = 1;
         Optional<User> ou = userService.getUserById(id);
         return ou.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
@@ -64,6 +71,51 @@ private final UserService userService;
         userService.deleteUser(id);
         return ResponseEntity.status(HttpStatus.OK).body("deleted user id:" + id);
     }
+
+    //signIn api ask front-end pass a map contains username and password
+    //return not found if user's password is not correct or username not found
+    //return success signed in message and set up the user web session if pwd and usn match
+
+
+    @PostMapping("/api/signIn")
+    public ResponseEntity<String> signIn(HttpServletRequest request,@RequestBody Map<String,String>credentials)
+    {
+
+        String username = credentials.get("username");
+        String password = credentials.get("password");
+        User currentUser = authentication(username,password);
+        if(currentUser!=null)
+        {
+            HttpSession session = request.getSession();
+            session.setAttribute("currentUser",currentUser);
+            return ResponseEntity.status(HttpStatus.OK).body("success sign in " + currentUser.getUsername());
+        }
+        else {
+            return  ResponseEntity.status(HttpStatus.OK).body("username or password incorrect " + username);
+        }
+
+    }
+
+    //validate is a username exist and if it matches this password
+    public User authentication (String username,String password)
+    {
+
+        User attemptUser;
+        //userService.deleteUser(3);
+        User attempt  = (User)userService.getUserByUsername(username);
+
+        if(attempt!=null)
+        {
+
+            if(password.equals(attempt.getPassword()))
+            {
+                return attempt;
+            }
+        }
+        return null;
+    }
+
+
 
 
 }
