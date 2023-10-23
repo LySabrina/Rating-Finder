@@ -27,8 +27,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -79,5 +78,22 @@ public class MainAPIsTest {
 
         assertEquals(HttpStatus.OK, ((ResponseEntity<?>) response).getStatusCode());
         assertEquals("success sign in " + testUser.getUsername(), response.getBody());
+    }
+    @Test
+    void testSignUp()
+    {
+        User testUser = new User();
+        testUser.setUsername("newUser1");
+        testUser.setPassword("abcdef");
+        testUser.setEmail("test@email.com");
+        testUser.setCredit_level(2);
+
+        when(userRepository.countNames(anyString())).thenReturn(anyInt());
+        when(userRepository.save(testUser)).thenReturn(testUser);
+        ResponseEntity<String> response = mainAPIs.signUp(testUser);
+
+        assertEquals(HttpStatus.OK, ((ResponseEntity<?>) response).getStatusCode());
+        assertEquals("New user has been signed Up " + testUser.getUsername(), response.getBody());
+
     }
 }

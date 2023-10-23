@@ -55,4 +55,10 @@ public class UserService {
             throw new IllegalArgumentException("User not found with user_id: " + userId);
         }
     }
+
+    public int countName(String username)
+    {
+        int count = userRepository.countNames(username);
+        return count;
+    }
 }

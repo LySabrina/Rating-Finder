@@ -115,6 +115,43 @@ private final UserService userService;
         return null;
     }
 
+    @PostMapping("/api/SignUp")
+    public ResponseEntity<String> signUp(@RequestBody User newUser)
+    {
+        if(userService.countName(newUser.getUsername()) == 0)
+        {
+            User verify = userService.saveUser(newUser);
+            if(verify!=null)
+            {
+                return ResponseEntity.status(HttpStatus.OK).body("New user has been signed Up " + newUser.getUsername());
+            }
+            return ResponseEntity.status(HttpStatus.OK).body("failed save" + newUser.getUsername());
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.OK).body("this name has been occupied " + newUser.getUsername());
+        }
+
+    }
+
+    @GetMapping("/api/test")
+    public String tester ()
+    {
+        User testUser = new User();
+        testUser.setUsername("newUser");
+        testUser.setPassword("abcdef");
+        testUser.setEmail("test@email.com");
+        testUser.setCredit_level(2);
+        if(userService.countName(testUser.getUsername()) == 0)
+        {
+            User verify = userService.saveUser(testUser);
+            if(verify!=null)
+            {
+                return "New user has been signed Up";
+            }
+            return "faild";
+        }
+        return "duplicated name";
+    }
 
 
 
