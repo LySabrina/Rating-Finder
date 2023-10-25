@@ -12,7 +12,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private int user_id;
+    private Integer user_id;
     @Column(name = "username")
     private String username;
     @Column(name="password")
@@ -74,6 +74,5 @@ public class User {
     public void setCredit_level(int credit_level) {
         this.credit_level = credit_level;
     }
-
 
 }
