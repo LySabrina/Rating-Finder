@@ -4,6 +4,7 @@ package com.example.ratingfinder.controller;
 import com.example.ratingfinder.models.User;
 import com.example.ratingfinder.service.*;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -106,6 +107,7 @@ public JdbcTemplate jdbcTemplate;
         {
             HttpSession session = request.getSession();
             session.setAttribute("currentUser",currentUser);
+
             return ResponseEntity.status(HttpStatus.OK).body("Success sign in " + currentUser.getUsername());
 
         }
