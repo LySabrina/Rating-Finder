@@ -2,6 +2,7 @@ package com.example.ratingfinder.controller;
 
 import com.example.ratingfinder.models.*;
 import com.example.ratingfinder.models.dto.ReviewDTO;
+
 import com.example.ratingfinder.models.dto.UserReviewDTO;
 import com.example.ratingfinder.service.*;
 
@@ -19,6 +20,7 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 /**
  * Review Controller responsible for handling requests
  * Handles Requests related to Review and UserReview
@@ -41,7 +43,7 @@ public class ReviewController {
     }
 
     //<!--------------------------- GET MAPPING ----------------------->
-    //Get all Professional Reviews for a producr
+    //Get all Professional Reviews for a product
     @GetMapping("/product/{id}/review")
     public List<ReviewDTO> getReviewForProduct(@PathVariable int id){
        List<Review> reviews = reviewService.getReviewForId(id);
@@ -65,7 +67,14 @@ public class ReviewController {
         return ResponseEntity.ok(userReviewDTOS);
     }
 
-    //Returns image as Base64
+    //Get UserReview made by User ID
+    @GetMapping("/user/{id}/userReview")
+    public ResponseEntity<List<UserReviewDTO>> getUserReviewForId(@PathVariable int id){
+        List<UserReviewDTO> userReviewDTOS = userReviewService.getUserReviewsForId(id);
+        return ResponseEntity.ok(userReviewDTOS);
+    }
+
+    //Returns image as a byte[]
     @GetMapping("/product/getPicture")
     public ResponseEntity<List<byte[]>> getPicture(){
 
@@ -89,9 +98,11 @@ public class ReviewController {
             //Setting the User_ID, Product, UserRating Number
             User u = userService.getUserById(userReviewDTO.getUser_id()).get();
 
-
             userReview.setUser_id(u);
             userReview.setReview_text(userReviewDTO.getReview_text());
+
+            userReview.setDate(userReviewDTO.getDate());
+
 
             Product p = productService.getProductById(userReviewDTO.getProduct_id());
 
@@ -105,6 +116,7 @@ public class ReviewController {
 //            userReviewService.flush();
 
             //Dealing with uploaded photos
+
             if(file != null){
                 for(MultipartFile f : file){
                     String fileName = StringUtils.cleanPath(f.getOriginalFilename());
@@ -117,10 +129,13 @@ public class ReviewController {
                     imageService.saveImage(img);
                 }
             }
+            else{
+                System.out.println("FILE IS FALSE" );
+            }
 
             int newAvgRating = userReviewService.getAvgRatingForProduct(p.getProd_id());
             productService.setRating(newAvgRating, p.getProd_id());
-            //Now that user_review is in the database, we want to update the product's rating
+
 
 
             return new ResponseEntity<>("Successfully created review", HttpStatus.OK);
@@ -133,6 +148,8 @@ public class ReviewController {
     }
 
 
+    //Update Review
+    public void updateUserReview(){
 
-
+    }
 }

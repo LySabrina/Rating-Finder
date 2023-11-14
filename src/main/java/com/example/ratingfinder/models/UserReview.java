@@ -1,10 +1,12 @@
 package com.example.ratingfinder.models;
 
+
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -14,6 +16,7 @@ public class UserReview {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userReviewId;
+
 
     @ManyToOne
     @JoinColumn(name="user_id")
@@ -32,6 +35,8 @@ public class UserReview {
    private int rating;
 
 
+   //Create default value
+   private LocalDate date = LocalDate.now();
 ////    //MappedBy is the variable inside Image
 //    @OneToMany(mappedBy = "user_review_id" )
 //   private List<Image> images;
