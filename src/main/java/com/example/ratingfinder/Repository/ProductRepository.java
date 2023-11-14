@@ -7,10 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
+
 
     @Query(value = "SELECT prod_id from Product where product_name = :prod_name", nativeQuery = true)
     int getIdFromName(@Param("prod_name") String prod_name);
@@ -40,6 +43,24 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 //    @Query(value = "SELECT * FROM product where product_type =:product_type AND product_brand IN :brands AND price >= :minPrice AND price <= :maxPrice", nativeQuery = true)
 //    List<Product> getFilteredProducts(@Param("brands")List<String> brands, @Param("product_type")String product_type, @Param("minPrice") double minPrice, @Param("maxPrice") double maxPrice);
 
+
+//    @Query(value = "SELECT * from product where product_type LIKE %:type", nativeQuery = true)
+//    List<Product> getProductsByType(@Param("type") String type);
+//
+//    @Query(value = "SELECT * from product where product_name LIKE %:name%", nativeQuery = true)
+//    List<Product> getProductsByName(@Param("name") String name);
+//
+//    @Query(value = "SELECT * from product where product_brand LIKE %:product_brand%", nativeQuery = true)
+//    List<Product> getProductByBrand(@Param("name") String product_brand);
+
+
+
+
+
+
+
+}
+
     @Query(
             value ="Select p from Product as p where" +
                     " (:brands is null or p.brand IN :brands) " +
@@ -49,3 +70,4 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     List<Product> getFilteredProducts(@Param("brands")List<String> brands, @Param("product_type")String product_type, @Param("minPrice") double minPrice, @Param("maxPrice") double maxPrice);
 
 }
+

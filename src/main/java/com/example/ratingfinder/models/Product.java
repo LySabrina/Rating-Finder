@@ -6,6 +6,7 @@ import org.hibernate.annotations.ColumnDefault;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -37,5 +38,32 @@ public class Product {
     //Default value is 0
     @Column(name="rating")
     private int rating = 0;
+
+    public Product(int prod_id, String name, String brand, double price, String type, byte[] image, int rating) {
+        Prod_id = prod_id;
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.type = type;
+        this.image = image;
+        this.rating = rating;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Prod_id == product.Prod_id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Prod_id);
+    }
+
+
+    public Product() {
+
+    }
 }
 

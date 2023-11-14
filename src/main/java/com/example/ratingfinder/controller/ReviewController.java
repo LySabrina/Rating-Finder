@@ -6,6 +6,7 @@ import com.example.ratingfinder.models.dto.ReviewDTO;
 import com.example.ratingfinder.models.dto.UserReviewDTO;
 import com.example.ratingfinder.service.*;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.http.ResponseEntity;
@@ -90,6 +91,7 @@ public class ReviewController {
 
     //<!--------------------------- POST MAPPING ----------------------->
     //Saves a userReview for a product
+    @Cacheable("productCache")
     @PostMapping("/product/{id}/create")
     public ResponseEntity<String> postReview(@RequestPart("data") UserReviewDTO userReviewDTO, @RequestPart(value="file", required = false) List<MultipartFile> file, @PathVariable int id){
         try{

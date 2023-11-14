@@ -2,11 +2,12 @@ package com.example.ratingfinder.models;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Serializable {
 
 
     @Id
