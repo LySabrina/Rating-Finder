@@ -2,16 +2,17 @@ package com.example.ratingfinder.controller;
 
 
 import com.example.ratingfinder.models.User;
-import com.example.ratingfinder.service.UserService;
+import com.example.ratingfinder.service.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -21,11 +22,27 @@ public class MainAPIs {
 
 private final UserService userService;
 
-//users CRUD apis
+private final ReviewService reviewService;
 
+private final ProductService productService;
+
+
+private final UserReviewService userReviewService;
+
+private final ImageService imageService;
+
+//users CRUD apis
+@Autowired
+public JdbcTemplate jdbcTemplate;
     @Autowired
-    public MainAPIs(UserService userService) {
+    public MainAPIs(ReviewService reviewService, ProductService productService, UserService userService, UserReviewService userReviewService, ImageService imageService)
+    {
         this.userService = userService;
+        this.reviewService =reviewService;
+        this.productService =productService;
+        this.userReviewService = userReviewService;
+        this.imageService= imageService;
+
     }
 
     @GetMapping("/api/getAllUsers")
@@ -88,10 +105,11 @@ private final UserService userService;
         {
             HttpSession session = request.getSession();
             session.setAttribute("currentUser",currentUser);
-            return ResponseEntity.status(HttpStatus.OK).body("success sign in " + currentUser.getUsername());
+            return ResponseEntity.status(HttpStatus.OK).body("Success sign in " + currentUser.getUsername());
+
         }
         else {
-            return  ResponseEntity.status(HttpStatus.OK).body("username or password incorrect " + username);
+            return ResponseEntity.status(HttpStatus.OK).body("username or pwd error");
         }
 
     }
@@ -100,22 +118,38 @@ private final UserService userService;
     public User authentication (String username,String password)
     {
 
-        User attemptUser;
-        //userService.deleteUser(3);
-        User attempt  = (User)userService.getUserByUsername(username);
-
-        if(attempt!=null)
-        {
-
-            if(password.equals(attempt.getPassword()))
+        try {
+            String sql = "SELECT * FROM user WHERE username = ?";
+            List<Map<String,Object>>  list= jdbcTemplate.queryForList(sql,username);
+            if(list.size()==1)
             {
-                return attempt;
+
+                Map<String, Object> map = list.get(0);
+                if(map.get("password") .equals(password))
+                {
+                    Integer userId = (Integer) map.get("user_id");
+                    String un = (String) map.get("username");
+                    String pw = (String) map.get("password");
+                    String email = (String) map.get("email");
+                    int creditLevel = (int) map.get("credit_level");
+
+                    User attempt = new User(userId, un, pw, email, creditLevel);
+                    return attempt;
+                }
+                return null;
+
             }
+
+        } catch (EmptyResultDataAccessException e) {
+            // Handle the case where no user is found
+            return null;
         }
+
+
         return null;
     }
 
-    @PostMapping("/api/SignUp")
+    @PostMapping("/api/signUp")
     public ResponseEntity<String> signUp(@RequestBody User newUser)
     {
         if(userService.countName(newUser.getUsername()) == 0)
@@ -132,6 +166,7 @@ private final UserService userService;
         }
 
     }
+
 
     @GetMapping("/api/test")
     public String tester ()
@@ -152,6 +187,7 @@ private final UserService userService;
         }
         return "duplicated name";
     }
+
 
 
 
