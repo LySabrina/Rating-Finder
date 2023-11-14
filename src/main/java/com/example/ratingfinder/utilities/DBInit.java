@@ -36,12 +36,19 @@ public class DBInit implements CommandLineRunner {
 
 
         // <!----------- PHONE ----------->
-//        hifi.crawl("https://www.whathifi.com/us/products/tablets-and-smartphones", "Phone");
-        //UNCOMMENT BELOW TO SCRPAE FROM ANOTHER SITE
-//        techRadar.crawl("https://www.techradar.com/phones/reviews/", "Phone");
+        hifi.crawl("https://www.whathifi.com/us/products/tablets-and-smartphones", "Phone");
+//        UNCOMMENT BELOW TO SCRPAE FROM ANOTHER SITE
+        techRadar.crawl("https://www.techradar.com/phones/reviews/", "Phone");
 
         // <!----------- HEADPHONE ----------->
-        hifi.crawl("https://www.whathifi.com/us/products/headphones/page/4", "Headphones");
+//        hifi.crawl("https://www.whathifi.com/us/products/headphones/page/4", "Headphones");
+
+
+        // <!----------- GAME CONSOLES ----------->
+//        hifi.crawl("https://www.whathifi.com/us/products/games-consoles", "Game Consoles");
+
+
+
 
         System.out.println("---- FINISHED SCRAPING + SUMMARIZING");
 

@@ -1,16 +1,23 @@
 package com.example.ratingfinder.controller;
 
 import com.example.ratingfinder.models.Product;
+import com.example.ratingfinder.models.ProductPage;
+
+import com.example.ratingfinder.models.ProductSearchCriteria;
 import com.example.ratingfinder.service.ProductService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@CrossOrigin(origins = "http://localhost:3000")
+/**
+ * Controller to handle API points related to Products
+ */
+@RestController     //Automatically converts results to JSON format
+@CrossOrigin(origins = "http://localhost:3000"
+)
 public class ProductController {
 
     private final ProductService productService;
@@ -21,6 +28,13 @@ public class ProductController {
     @GetMapping("/product/allProduct")
     public List<Product> getAllProducts(){
         return productService.getAllProducts();
+    }
+
+    @GetMapping("/product")
+    public Page<Product> getProductsByPage(ProductPage productPage, ProductSearchCriteria productSearchCriteria){
+//        Pageable pageable = PageRequest.of(productPage.getPageNumber(), productPage.getPageSize());
+        return productService.filter(productPage, productSearchCriteria);
+//        return productService.getProductByPages(pageable);
     }
 
     @GetMapping("/product/brands")
@@ -43,6 +57,19 @@ public class ProductController {
         return productService.getAllPrices();
     }
 
+
+    //Implement some filtering of products
+//    @GetMapping("/product/filter")
+//    public List<Product> getFilteredProducts(@RequestParam(required = false) List<String> brands, @RequestParam(required = false) String product_type, @RequestParam double minPrice, @RequestParam double maxPrice){
+//        return productService.getFilterProducts(brands, product_type, minPrice, maxPrice);
+//
+//    }
+
+
+//    @GetMapping("/product/test")
+//    public List<Product> filter(@RequestParam(required = false) List<String> brands, @RequestParam(required = false) String product_type, @RequestParam double minPrice, @RequestParam double maxPrice){
+//        return
+//    }
 //    @GetMapping("/product/existing/")
 //    public Integer getExistingProductID(){
 //        return productService.getExistingProductID("iPhone 15 Pro Max");
@@ -52,4 +79,6 @@ public class ProductController {
 //    public Integer getNonExist(){
 //        return productService.getExistingProductID("Sony Xperia 5 V");
 //    }
+
+
 }

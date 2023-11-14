@@ -35,8 +35,13 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query(value = "SELECT DISTINCT price from product", nativeQuery = true)
     List<Double> getAllPrices();
 
+    //Change to a list maybe?
     @Query(value = "SELECT * from product where product_name LIKE %:name", nativeQuery = true)
     Product getExistingProductID(@Param("name")String name);
+
+// Query causes issues
+//    @Query(value = "SELECT * FROM product where product_type =:product_type AND product_brand IN :brands AND price >= :minPrice AND price <= :maxPrice", nativeQuery = true)
+//    List<Product> getFilteredProducts(@Param("brands")List<String> brands, @Param("product_type")String product_type, @Param("minPrice") double minPrice, @Param("maxPrice") double maxPrice);
 
 
 //    @Query(value = "SELECT * from product where product_type LIKE %:type", nativeQuery = true)
@@ -55,3 +60,14 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 
 }
+
+    @Query(
+            value ="Select p from Product as p where" +
+                    " (:brands is null or p.brand IN :brands) " +
+                    " AND (:product_type IS NULL or p.type = :product_type) " +
+                    " AND (:minPrice IS NULL or p.price >= :minprice) " +
+                    "AND (:maxPrice IS NULL or p.price <= :maxPrice)")
+    List<Product> getFilteredProducts(@Param("brands")List<String> brands, @Param("product_type")String product_type, @Param("minPrice") double minPrice, @Param("maxPrice") double maxPrice);
+
+}
+

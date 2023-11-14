@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class MainAPIs {
 
 private final UserService userService;
@@ -53,7 +54,7 @@ public JdbcTemplate jdbcTemplate;
     }
 
     @PostMapping("/api/createUser")
-    public ResponseEntity<String> createUser(@RequestParam User newUser)
+    public ResponseEntity<String> createUser( User newUser)
     {
 
         userService.saveUser(newUser);
