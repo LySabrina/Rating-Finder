@@ -49,19 +49,14 @@ public class ProductCriteriaRepository {
 
     public Predicate getPredicate(Root<Product> root, ProductSearchCriteria productSearchCriteria){
         List<Predicate> predicateList = new ArrayList<>();
-        if(productSearchCriteria == null){
-            System.out.println("is null");
-        }
-        else{
-            System.out.printf("not null");
-        }
+
             if(Objects.nonNull(productSearchCriteria.getBrands())){
-                System.out.println("IN BRAND SERACH");
+
                 predicateList.add(root.get("brand").in(productSearchCriteria.getBrands()));
             }
 
         if(Objects.nonNull(productSearchCriteria.getProduct_type())){
-            System.out.println("IN PRODUCT TYPE SERACH");
+
             predicateList.add(root.get("type").in(productSearchCriteria.getProduct_type()));
 
         }

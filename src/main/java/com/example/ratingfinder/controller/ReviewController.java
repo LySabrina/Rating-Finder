@@ -151,7 +151,36 @@ public class ReviewController {
 
 
     //Update Review
-    public void updateUserReview(){
+    @PostMapping("/update")
+    public ResponseEntity<String> updateUserReview(@RequestBody UserReviewDTO userReviewDTO){
+        int user_id = userReviewDTO.getUser_id();
+        int product_id = userReviewDTO.getProduct_id();
+        System.out.println("USER ID " + user_id);
+        System.out.println( "prod uid" + product_id);
+        boolean update = userReviewService.update(userReviewDTO);
 
+        if(update){
+            return new ResponseEntity<String>("Successfully updated product_id : " + product_id + " for user_id : " + user_id, HttpStatus.OK );
+
+        }
+        else{
+            return new ResponseEntity<String>("FAILED TO updated product_id : " + product_id + " for user_id : " + user_id, HttpStatus.CONFLICT);
+        }
     }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteUserReview (@RequestBody UserReviewDTO userReviewDTO){
+        int user_id = userReviewDTO.getUser_id();
+        int product_id = userReviewDTO.getProduct_id();
+        boolean delete = userReviewService.delete(userReviewDTO);
+
+        if(delete){
+            return new ResponseEntity<String>("Successfully deleted review with product_id : " + product_id + " for user_id : " + user_id, HttpStatus.OK );
+
+        }
+        else{
+            return new ResponseEntity<String>("FAILED TO delete review with product_id : " + product_id + " for user_id : " + user_id, HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

@@ -11,5 +11,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry){
         registry.addInterceptor(new SessionInterceptor()).addPathPatterns("/api/getAllUsers");
         registry.addInterceptor(new SessionInterceptor()).addPathPatterns("/product/allProduct");
+        registry.addInterceptor(new SessionInterceptor()).addPathPatterns("/delete");
+        registry.addInterceptor(new SessionInterceptor()).addPathPatterns("/update");
     }
 }

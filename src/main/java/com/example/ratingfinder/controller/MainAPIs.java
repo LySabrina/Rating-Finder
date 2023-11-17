@@ -1,6 +1,7 @@
 package com.example.ratingfinder.controller;
 
 
+import com.example.ratingfinder.models.Response;
 import com.example.ratingfinder.models.User;
 import com.example.ratingfinder.service.*;
 import jakarta.servlet.http.HttpServletRequest;
@@ -97,7 +98,7 @@ public JdbcTemplate jdbcTemplate;
 
 
     @PostMapping("/api/signIn")
-    public ResponseEntity<String> signIn(HttpServletRequest request,@RequestBody Map<String,String>credentials)
+    public ResponseEntity<Response> signIn(HttpServletRequest request,@RequestBody Map<String,String>credentials)
     {
 
         String username = credentials.get("username");
@@ -108,11 +109,19 @@ public JdbcTemplate jdbcTemplate;
             HttpSession session = request.getSession();
             session.setAttribute("currentUser",currentUser);
 
-            return ResponseEntity.status(HttpStatus.OK).body("Success sign in " + currentUser.getUsername());
+            Response response = new Response();
+            response.setUser(currentUser);
+            response.setMessage("Success sign in " + currentUser.getUsername());
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+//            return ResponseEntity.status(HttpStatus.OK).body("Success sign in " + currentUser.getUsername());
 
         }
         else {
-            return ResponseEntity.status(HttpStatus.OK).body("username or pwd error");
+            Response response = new Response();
+            response.setUser(null);
+            response.setMessage("username or pwd error");
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+//            return ResponseEntity.status(HttpStatus.OK).body("username or pwd error");
         }
 
     }

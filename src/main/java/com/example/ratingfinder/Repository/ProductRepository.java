@@ -59,7 +59,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 
 
-}
+
 
     @Query(
             value ="Select p from Product as p where" +

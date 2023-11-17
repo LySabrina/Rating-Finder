@@ -67,9 +67,13 @@ public class UserReviewService {
 
         for(UserReview r : reviews){
             UserReviewDTO userReviewDTO = new UserReviewDTO();
+            User username = userService.getUserById(userId).get();
+            userReviewDTO.setUsername(username.getUsername());
             userReviewDTO.setRating(r.getRating());
             userReviewDTO.setReview_text(r.getReview_text());
             userReviewDTO.setDate(r.getDate());
+            userReviewDTO.setUser_id(userId);
+            userReviewDTO.setProduct_id(r.getProduct().getProd_id());
             List<byte[]> photos = imageService.getUserReviewImages(r.getUserReviewId());
             userReviewDTO.setPhotos(photos);
             Product p = r.getProduct();
@@ -79,5 +83,31 @@ public class UserReviewService {
             userReviewDTOList.add(userReviewDTO);
         }
         return userReviewDTOList;
+    }
+
+    public boolean update (UserReviewDTO userReviewDTO){
+        int user_id = userReviewDTO.getUser_id();
+        int rating = userReviewDTO.getRating();
+        String review_text = userReviewDTO.getReview_text();
+        int product_id = userReviewDTO.getProduct_id();
+        int numUpdated = userReviewRepository.update(user_id, rating, review_text, product_id);
+        if(numUpdated > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean delete (UserReviewDTO userReviewDTO){
+        int user_id = userReviewDTO.getUser_id();
+        int product_id = userReviewDTO.getProduct_id();
+        int deleteNum = userReviewRepository.delete(user_id, product_id);
+        if(deleteNum > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
