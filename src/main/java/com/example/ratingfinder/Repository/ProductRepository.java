@@ -23,13 +23,14 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     List<String> getBrands();
 
 
-    @Query(value ="SELECT DISTINCT product_type from Product", nativeQuery = true)
+    @Query(value = "SELECT DISTINCT product_type from Product", nativeQuery = true)
     List<String> getProductTypes();
 
     @Modifying  //to allow us to perform UPDATE operations
-    @Transactional  //add this to declare as a transaction. W/o this, Springboot will be upset and say we are modifying DB without transaction
+    @Transactional
+    //add this to declare as a transaction. W/o this, Springboot will be upset and say we are modifying DB without transaction
     @Query(value = "UPDATE product SET rating =:rating WHERE prod_id =:id", nativeQuery = true)
-    void setProductRating(@Param("rating")int rating, @Param("id") int id);
+    void setProductRating(@Param("rating") int rating, @Param("id") int id);
 
 
     @Query(value = "SELECT DISTINCT price from product", nativeQuery = true)
@@ -37,7 +38,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     //Change to a list maybe?
     @Query(value = "SELECT * from product where product_name LIKE %:name", nativeQuery = true)
-    Product getExistingProductID(@Param("name")String name);
+    Product getExistingProductID(@Param("name") String name);
+}
 
 // Query causes issues
 //    @Query(value = "SELECT * FROM product where product_type =:product_type AND product_brand IN :brands AND price >= :minPrice AND price <= :maxPrice", nativeQuery = true)
@@ -61,13 +63,13 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 
 
-    @Query(
-            value ="Select p from Product as p where" +
-                    " (:brands is null or p.brand IN :brands) " +
-                    " AND (:product_type IS NULL or p.type = :product_type) " +
-                    " AND (:minPrice IS NULL or p.price >= :minprice) " +
-                    "AND (:maxPrice IS NULL or p.price <= :maxPrice)")
-    List<Product> getFilteredProducts(@Param("brands")List<String> brands, @Param("product_type")String product_type, @Param("minPrice") double minPrice, @Param("maxPrice") double maxPrice);
-
-}
+//    @Query(
+//            value ="Select p from Product as p where" +
+//                    " (:brands is null or p.brand IN :brands) " +
+//                    " AND (:product_type IS NULL or p.type = :product_type) " +
+//                    " AND (:minPrice IS NULL or p.price >= :minprice) " +
+//                    "AND (:maxPrice IS NULL or p.price <= :maxPrice)")
+//    List<Product> getFilteredProducts(@Param("brands")List<String> brands, @Param("product_type")String product_type, @Param("minPrice") double minPrice, @Param("maxPrice") double maxPrice);
+//
+//}
 

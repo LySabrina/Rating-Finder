@@ -95,8 +95,6 @@ public JdbcTemplate jdbcTemplate;
     //signIn api ask front-end pass a map contains username and password
     //return not found if user's password is not correct or username not found
     //return success signed in message and set up the user web session if pwd and usn match
-
-
     @PostMapping("/api/signIn")
     public ResponseEntity<Response> signIn(HttpServletRequest request,@RequestBody Map<String,String>credentials)
     {
@@ -179,6 +177,21 @@ public JdbcTemplate jdbcTemplate;
 
     }
 
+    //getCurrUser api return the current session user if user has been signed in
+    //else return notfound.
+    @GetMapping("/api/getCurrUser")
+    public ResponseEntity<User> getCurrentUser(HttpServletRequest request)
+    {
+        User curr = (User) request.getSession().getAttribute("currentUser");
+        if(curr==null)
+        {
+            return ResponseEntity.notFound().build();
+        }
+        else {
+            return ResponseEntity.ok(curr);
+        }
+    }
+
 
     @GetMapping("/api/test")
     public String tester ()
@@ -199,6 +212,9 @@ public JdbcTemplate jdbcTemplate;
         }
         return "duplicated name";
     }
+
+
+
 
 
 

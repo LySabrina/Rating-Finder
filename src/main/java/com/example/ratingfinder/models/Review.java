@@ -25,4 +25,6 @@ public class Review {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Product product;
 
+
+
 }
