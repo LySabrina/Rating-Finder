@@ -22,6 +22,9 @@ public interface UserReviewRepository extends JpaRepository<UserReview, Integer>
     @Query(value = "SELECT * from user_review where user_id =:user_id", nativeQuery = true)
     public List<UserReview> findAllUserReviewByUserId(@Param("user_id") int user_id);
 
+    @Query(value = "SELECT * FROM user_review where user_id =:userId AND product_id =:productId", nativeQuery = true)
+    public UserReview getUserReview(int userId, int productId);
+
     @Modifying
     @Transactional
     @Query(value = "UPDATE user_review set rating =:rating, review_text =:review_text where user_id = :user_id AND product_id = :product_id", nativeQuery = true)
@@ -32,5 +35,6 @@ public interface UserReviewRepository extends JpaRepository<UserReview, Integer>
     @Transactional
     @Query(value = "DELETE FROM user_review where user_id = :user_id AND product_id = :product_id", nativeQuery = true)
     public int delete(@Param("user_id") int user_id, @Param("product_id") int product_id);
+
 
 }

@@ -16,6 +16,7 @@ public class UserReviewDTO {
     private int rating;
     private int product_id;
     private LocalDate date = LocalDate.now();
-    private List<byte[]> photos;
+//    private List<byte[]> photos;
+    private List<ImageDTO> photos;
     private String productName;
 }

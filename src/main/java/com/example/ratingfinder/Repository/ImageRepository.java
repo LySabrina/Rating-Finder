@@ -9,7 +9,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface ImageRepository extends JpaRepository<Image, Integer> {
+//    @Query(value = "SELECT image from image where user_review_id =:user_review_id", nativeQuery = true)
+//    public List<byte[]> getUserReviewImages(@Param("user_review_id") int user_review_id);
 
-    @Query(value = "SELECT image from image where user_review_id =:user_review_id", nativeQuery = true)
-    public List<byte[]> getUserReviewImages(@Param("user_review_id") int user_review_id);
+    @Query(value = "SELECT * from image where user_review_id =:user_review_id", nativeQuery = true)
+    public List<Image> getUserReviewImages(@Param("user_review_id") int user_review_id);
+
+
 }

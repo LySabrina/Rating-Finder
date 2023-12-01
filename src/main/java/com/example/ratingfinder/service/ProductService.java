@@ -2,10 +2,9 @@ package com.example.ratingfinder.service;
 
 
 import com.example.ratingfinder.Repository.ProductCriteriaRepository;
-import com.example.ratingfinder.models.Product;
+import com.example.ratingfinder.Repository.UserProductRepository;
+import com.example.ratingfinder.models.*;
 import com.example.ratingfinder.Repository.ProductRepository;
-import com.example.ratingfinder.models.ProductPage;
-import com.example.ratingfinder.models.ProductSearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,12 +22,15 @@ public class ProductService {
     private final UserReviewService userReviewService;
 
     private final ProductCriteriaRepository productCriteriaRepository;
+    private final UserProductRepository userProductRepository;
+    private final UserService userService;
     @Autowired
-    public ProductService(ProductRepository productRepository, UserReviewService userReviewService, ProductCriteriaRepository productCriteriaRepository){
+    public ProductService(ProductRepository productRepository, UserReviewService userReviewService, ProductCriteriaRepository productCriteriaRepository, UserProductRepository userProductRepository, UserService userService){
         this.productRepository = productRepository;
         this.userReviewService = userReviewService;
+        this.userProductRepository = userProductRepository;
         this.productCriteriaRepository = productCriteriaRepository;
-
+        this.userService = userService;
     }
 
     public List<String> getBrands(){
@@ -70,4 +72,27 @@ public class ProductService {
         return productCriteriaRepository.findProductsWithFilter(productPage, productSearchCriteria);
     }
 
+    public String saveProduct(int product_id, int user_id){
+        UserProduct userProduct = new UserProduct();
+        Product p = productRepository.getReferenceById(product_id);
+        User u = userService.getUserById(user_id).get();
+        userProduct.setUser(u);
+        userProduct.setProduct(p);
+        userProductRepository.save(userProduct);
+        return "Saved Product id: " + product_id + " for user: " + user_id;
+    }
+
+    public List<Product> getSavedProducts (int user_id){
+        List<Integer> savedproductsId = userProductRepository.getProductId(user_id);
+        return productRepository.findAllById(savedproductsId);
+    }
+
+    public String deleteSavedProduct (int product_id, int user_id){
+       int deleteRows = userProductRepository.deleteSavedProduct(product_id, user_id);
+       if(deleteRows > 0){
+           return "Successfully deleted product - " + product_id +" for user_id- " + user_id;
+       }
+       return "FAILED TO DELETE";
+
+    }
 }

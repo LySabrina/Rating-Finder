@@ -3,6 +3,8 @@ package com.example.ratingfinder.models;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -22,6 +24,7 @@ public class User implements Serializable {
     private String email;
     @Column(name="credit_level")
     private int credit_level;
+
 
 
     public User(int user_id, String username, String password, String email, int credit_level) {

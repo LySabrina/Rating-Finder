@@ -3,6 +3,7 @@ package com.example.ratingfinder.service;
 import com.example.ratingfinder.Repository.ProductRepository;
 import com.example.ratingfinder.Repository.UserReviewRepository;
 import com.example.ratingfinder.models.*;
+import com.example.ratingfinder.models.dto.ImageDTO;
 import com.example.ratingfinder.models.dto.UserReviewDTO;
 
 import org.springframework.stereotype.Service;
@@ -27,6 +28,9 @@ public class UserReviewService {
     }
 
 
+    public UserReview getUserReview(int userId, int productId){
+        return userReviewRepository.getUserReview(userId, productId);
+    }
 
     public UserReview addUserReview(UserReview userReview){
         return userReviewRepository.save(userReview);
@@ -45,9 +49,20 @@ public class UserReviewService {
             int user_review_id = r.getUserReviewId();
             String username = r.getUser_id().getUsername();
             userReviewDTO.setUsername(username);
-            List<byte[]> photos = imageService.getUserReviewImages(user_review_id);
-            userReviewDTO.setPhotos(photos);
 
+            List<Image> photos = imageService.getUserReviewImages(user_review_id);
+            List<ImageDTO> imageDTOS = new ArrayList<>();
+            for(Image i : photos){
+                ImageDTO imageDTO = new ImageDTO();
+                imageDTO.setFile_name(i.getFile_name());
+                imageDTO.setPhotos(i.getImage());
+                imageDTO.setImageId(i.getImage_id());
+                imageDTOS.add(imageDTO);
+            }
+//            List<byte[]> photos = imageService.getUserReviewImages(user_review_id);
+
+//            userReviewDTO.setPhotos(photos);
+            userReviewDTO.setPhotos(imageDTOS);
             dtos.add(userReviewDTO);
         }
         return dtos;
@@ -63,7 +78,7 @@ public class UserReviewService {
     public List<UserReviewDTO> getUserReviewsForId(int userId){
         List<UserReviewDTO> userReviewDTOList = new ArrayList<>();
         List<UserReview> reviews = userReviewRepository.findAllUserReviewByUserId(userId);
-        System.out.println(reviews.size());
+
 
         for(UserReview r : reviews){
             UserReviewDTO userReviewDTO = new UserReviewDTO();
@@ -74,8 +89,22 @@ public class UserReviewService {
             userReviewDTO.setDate(r.getDate());
             userReviewDTO.setUser_id(userId);
             userReviewDTO.setProduct_id(r.getProduct().getProd_id());
-            List<byte[]> photos = imageService.getUserReviewImages(r.getUserReviewId());
-            userReviewDTO.setPhotos(photos);
+
+            int userReviewId = r.getUserReviewId();
+
+            List<Image> photos = imageService.getUserReviewImages(userReviewId);
+            List<ImageDTO> imageDTOS = new ArrayList<>();
+            for(Image i : photos){
+                ImageDTO imageDTO = new ImageDTO();
+                imageDTO.setFile_name(i.getFile_name());
+                imageDTO.setPhotos(i.getImage());
+                imageDTO.setImageId(i.getImage_id());
+                imageDTOS.add(imageDTO);
+            }
+//            List<byte[]> photos = imageService.getUserReviewImages(r.getUserReviewId());
+//            userReviewDTO.setPhotos(photos);
+            userReviewDTO.setPhotos(imageDTOS);
+
             Product p = r.getProduct();
             String prodName = p.getName();
             userReviewDTO.setProductName(prodName);

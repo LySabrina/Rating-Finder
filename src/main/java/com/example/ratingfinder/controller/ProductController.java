@@ -8,6 +8,8 @@ import com.example.ratingfinder.service.ProductService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -55,6 +57,26 @@ public class ProductController {
     @GetMapping("/product/prices")
     public List<Double> getAllPrices(){
         return productService.getAllPrices();
+    }
+
+
+    @PostMapping("/save/{id}")
+    public ResponseEntity<String> saveProduct(@PathVariable int id, @RequestParam("userId") int user_id){
+
+        String response = productService.saveProduct(id, user_id);
+        return new ResponseEntity<String>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteSavedProduct (@PathVariable int id, @RequestParam("userId") int user_id){
+        String response = productService.deleteSavedProduct(id, user_id);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/user/save/{id}")
+    public ResponseEntity<List<Product>> getSavedProducts(@PathVariable int id){
+        List<Product> savedProducts = productService.getSavedProducts(id);
+        return new ResponseEntity<List<Product>>(savedProducts, HttpStatus.OK);
     }
 
 

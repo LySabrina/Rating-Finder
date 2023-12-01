@@ -76,18 +76,12 @@ public class ReviewController {
     }
 
     //Returns image as a byte[]
-    @GetMapping("/product/getPicture")
-    public ResponseEntity<List<byte[]>> getPicture(){
-
-        List<byte[]> n = imageService.getUserReviewImages(3);
-        return ResponseEntity.ok(n);
-//        List<UserReviewDTO> r= userReviewService.getUserReviewForProduct(1);
-//        UserReviewDTO d = r.get(2);
-//        byte[] img = d.getPhoto();
+//    @GetMapping("/product/getPicture")
+//    public ResponseEntity<List<byte[]>> getPicture(){
 //
-//        System.out.println("image created");
-//        return ResponseEntity.ok(img);
-    }
+//        List<byte[]> n = imageService.getUserReviewImages(3);
+//        return ResponseEntity.ok(n);
+//    }
 
     //<!--------------------------- POST MAPPING ----------------------->
     //Saves a userReview for a product
@@ -151,21 +145,68 @@ public class ReviewController {
 
 
     //Update Review
+//    @PostMapping("/update")
+//    public ResponseEntity<String> updateUserReview(@RequestBody UserReviewDTO userReviewDTO){
+//        int user_id = userReviewDTO.getUser_id();
+//        int product_id = userReviewDTO.getProduct_id();
+//        System.out.println("USER ID " + user_id);
+//        System.out.println( "prod uid" + product_id);
+//        boolean update = userReviewService.update(userReviewDTO);
+//
+//        if(update){
+//            return new ResponseEntity<String>("Successfully updated product_id : " + product_id + " for user_id : " + user_id, HttpStatus.OK );
+//
+//        }
+//        else{
+//            return new ResponseEntity<String>("FAILED TO updated product_id : " + product_id + " for user_id : " + user_id, HttpStatus.CONFLICT);
+//        }
+//    }
+
     @PostMapping("/update")
-    public ResponseEntity<String> updateUserReview(@RequestBody UserReviewDTO userReviewDTO){
+    public ResponseEntity<String> updateUserReview(@RequestPart("data") UserReviewDTO userReviewDTO, @RequestPart(value="file", required = false) List<MultipartFile> file){
         int user_id = userReviewDTO.getUser_id();
         int product_id = userReviewDTO.getProduct_id();
         System.out.println("USER ID " + user_id);
         System.out.println( "prod uid" + product_id);
         boolean update = userReviewService.update(userReviewDTO);
+        UserReview ur = userReviewService.getUserReview(user_id, product_id);
+        int newRating = userReviewService.getAvgRatingForProduct(product_id);
+        productService.setRating(newRating, product_id);
 
+        if(file != null){
+            updateUserReviewImages(file, ur);
+        }
         if(update){
+            System.out.println("Successfully updated product_id : " + product_id + " for user_id : " + user_id);
             return new ResponseEntity<String>("Successfully updated product_id : " + product_id + " for user_id : " + user_id, HttpStatus.OK );
 
         }
         else{
             return new ResponseEntity<String>("FAILED TO updated product_id : " + product_id + " for user_id : " + user_id, HttpStatus.CONFLICT);
         }
+    }
+
+    @PostMapping("/update/images")
+    public void updateUserReviewImages(@RequestPart(value = "file")List<MultipartFile> file, UserReview ur){
+        try{
+
+                for(MultipartFile f : file){
+                    String fileName = StringUtils.cleanPath(f.getOriginalFilename());
+                    byte[] imgBytes = f.getBytes();
+                    System.out.println("FILENAME - " + fileName);
+                    Image img = new Image();
+                    img.setFile_name(fileName);
+                    img.setImage(imgBytes);
+                    img.setUser_review_id(ur);
+                    imageService.saveImage(img);
+                }
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+
     }
 
     @DeleteMapping("/delete")
@@ -181,6 +222,12 @@ public class ReviewController {
         else{
             return new ResponseEntity<String>("FAILED TO delete review with product_id : " + product_id + " for user_id : " + user_id, HttpStatus.NOT_FOUND);
         }
+    }
+
+    @DeleteMapping("/delete/image")
+    public ResponseEntity<String> deleteImages (@RequestParam int id){
+        String response = imageService.deleteImage(id);
+        return new ResponseEntity<String>(response, HttpStatus.OK);
     }
 
 }
